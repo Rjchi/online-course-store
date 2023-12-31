@@ -1390,7 +1390,9 @@
             </li>
 
             <li class="account-access rbt-user-wrapper d-none d-xl-block">
-              <a href="#"><i class="feather-user"></i>Admin</a>
+              <a href="#" *ngIf="user"><i class="feather-user"></i>{{ user.name + (user.surname ? user.surname : "") }}</a
+              >
+              <a href="#" *ngIf="!user"><i class="feather-user"></i>Ingresa</a>
               <div class="rbt-user-menu-list-wrapper">
                 <div class="inner">
                   <div class="rbt-admin-profile">

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 
 import { AuthService } from '../service/auth.service';
@@ -11,13 +12,31 @@ export class LoginAndRegisterComponent {
   email: string = '';
   password: string = '';
 
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService, public router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    /**------------------------------------------------
+     * | Validamos si el usuario ya esta autenticado
+     * | Y lo redireccionamos al landig
+     * ------------------------------------------------*/
+
+    if (this.authService.user && this.authService.token) {
+      this.router.navigateByUrl('/');
+    }
+  }
 
   login() {
+    if (!this.email || !this.password) {
+      alert('No puedes ingresar sin llenar todos los datos');
+      return;
+    }
     this.authService.login(this.email, this.password).subscribe((res: any) => {
       console.log(res);
+      if (res) {
+        window.location.reload();
+      } else {
+        alert('Credenciales incorrectas');
+      }
     });
   }
 }
