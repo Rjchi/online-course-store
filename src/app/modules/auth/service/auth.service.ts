@@ -3,13 +3,29 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, map, of } from 'rxjs';
 
-import { URL_SERVICIOS } from 'src/app/config/config';
+import { URL_FROTEND, URL_SERVICIOS } from 'src/app/config/config';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(public http: HttpClient, public router: Router) {}
+  user: any = null;
+  token: any = null;
+
+  constructor(public http: HttpClient, public router: Router) {
+    /**-------------------------------------------------------------------------------
+     * | Cuando el servicio se inicializa accedemos y seteamos el user y el token
+     * -------------------------------------------------------------------------------*/
+
+    this.initAuthToken();
+  }
+
+  initAuthToken() {
+    if (localStorage.getItem('token')) {
+      this.token = localStorage.getItem('token');
+      this.user = JSON.parse(localStorage.getItem('user') ?? '');
+    }
+  }
 
   login(email: string, password: string) {
     let URL = URL_SERVICIOS + 'auth/login';
@@ -28,6 +44,12 @@ export class AuthService {
     );
   }
 
+  register(data: any) {
+    let URL = URL_SERVICIOS + 'auth/register';
+
+    return this.http.post(URL, data);
+  }
+
   saveLocalStorage(auth: any) {
     if (auth && auth.USER.token) {
       localStorage.setItem('token', auth.USER.token);
@@ -37,5 +59,13 @@ export class AuthService {
     } else {
       return false;
     }
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    setTimeout(() => {
+      location.href = URL_FROTEND + "/auth/login"
+    }, 50);
   }
 }
