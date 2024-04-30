@@ -20,6 +20,7 @@ export class HomeComponent {
   ngOnInit(): void {
     this.homeService.home().subscribe((response: any) => {
       this.CATEGORIES = response.categories;
+      console.log(response.categories);
     });
 
     setTimeout(() => {
