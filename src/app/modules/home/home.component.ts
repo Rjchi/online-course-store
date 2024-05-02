@@ -14,6 +14,7 @@ declare function countdownT(): any;
 })
 export class HomeComponent {
   CATEGORIES: any[] = [];
+  COURSES_TOP: any[] = [];
 
   constructor(public toaster: Toaster, public homeService: HomeService) {}
 
@@ -21,6 +22,7 @@ export class HomeComponent {
     this.homeService.home().subscribe((response: any) => {
       this.CATEGORIES = response.categories;
       console.log(response.categories);
+      this.COURSES_TOP = response.courses_top;
     });
 
     setTimeout(() => {
