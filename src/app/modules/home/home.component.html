@@ -241,16 +241,15 @@
             >
               <div class="inner">
                 <div class="icons">
-                  <img
-                    [src]="CATEGORIE.image"
-                    alt="Icons Images"
-                  />
+                  <img [src]="CATEGORIE.image" alt="Icons Images" />
                 </div>
                 <div class="content">
                   <h5 class="title">{{ CATEGORIE.title }}</h5>
                   <div class="read-more-btn">
                     <span class="rbt-btn-link"
-                      >{{ CATEGORIE.count_courses }} Courses<i class="feather-arrow-right"></i
+                      >{{ CATEGORIE.count_courses }} Courses<i
+                        class="feather-arrow-right"
+                      ></i
                     ></span>
                   </div>
                 </div>
@@ -276,7 +275,7 @@
               </p>
             </div>
             <div class="countdown-style-1 mt--50 d-flex justify-content-center">
-              <div class="countdown" data-date="2023-12-30" style="">
+              <div class="countdown" data-date="2023-12-30">
                 <div class="countdown-container days">
                   <span class="countdown-value">87</span>
                   <span class="countdown-heading">Days</span>
@@ -523,223 +522,79 @@
       </div>
       <!-- Start Card Area -->
       <div class="row g-5">
-        <!-- Start Single Course  -->
-        <div class="col-lg-4 col-md-6 col-12">
-          <div class="rbt-card variation-01 rbt-hover">
-            <div class="rbt-card-img">
-              <a href="course-details.html">
-                <img
-                  src="assets/images/course/course-01.jpg"
-                  alt="Card image"
-                />
-                <div class="rbt-badge-3 bg-white">
-                  <span>-50%</span>
-                  <span>Off</span>
-                </div>
-              </a>
-            </div>
-            <div class="rbt-card-body">
-              <div class="rbt-card-top">
-                <div class="rbt-review">
-                  <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+        <ng-container *ngFor="let COURSE_TOP of COURSES_TOP">
+          <!-- Start Single Course  -->
+          <div class="col-lg-4 col-md-6 col-12">
+            <div class="rbt-card variation-01 rbt-hover">
+              <div class="rbt-card-img">
+                <a href="course-details.html">
+                  <img [src]="COURSE_TOP.image" alt="Card image" />
+                  <!-- <div class="rbt-badge-3 bg-white">
+                    <span>-50%</span>
+                    <span>Off</span>
+                  </div> -->
+                </a>
+              </div>
+              <div class="rbt-card-body">
+                <div class="rbt-card-top">
+                  <div class="rbt-review">
+                    <div class="rating">
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                      <i class="fas fa-star"></i>
+                    </div>
+                    <span class="rating-count"> (15 Reviews)</span>
                   </div>
-                  <span class="rating-count"> (15 Reviews)</span>
+                  <div class="rbt-bookmark-btn">
+                    <a class="rbt-round-btn" title="Bookmark" href="#"
+                      ><i class="feather-bookmark"></i
+                    ></a>
+                  </div>
                 </div>
-                <div class="rbt-bookmark-btn">
-                  <a class="rbt-round-btn" title="Bookmark" href="#"
-                    ><i class="feather-bookmark"></i
+
+                <h4 class="rbt-card-title">
+                  <a href="course-details.html">{{ COURSE_TOP.title }}</a>
+                </h4>
+                <ul class="rbt-meta">
+                  <li><i class="feather-book"></i>20 Lessons</li>
+                  <li><i class="feather-users"></i>40 Students</li>
+                </ul>
+                <p class="rbt-card-text">
+                  {{ COURSE_TOP.subtitle }}
+                </p>
+                <div class="rbt-author-meta mb--20">
+                  <div class="rbt-avater">
+                    <a href="#">
+                      <img
+                        [src]="COURSE_TOP.user.avatar"
+                        alt="Sophia Jaymes"
+                      />
+                    </a>
+                  </div>
+                  <div class="rbt-author-info">
+                    By
+                    <a href="profile.html">{{
+                      COURSE_TOP.user.name + " " + COURSE_TOP.user.surname
+                    }}</a>
+                    In
+                    <a href="#">{{ COURSE_TOP.user.profession }}</a>
+                  </div>
+                </div>
+
+                <div class="rbt-card-bottom">
+                  <div class="rbt-price">
+                    <span class="current-price">${{ COURSE_TOP.price_usd }}</span>
+                    <!-- <span class="off-price">$120</span> -->
+                  </div>
+                  <a class="rbt-btn-link" href="course-details.html"
+                    >Learn More<i class="feather-arrow-right"></i
                   ></a>
                 </div>
               </div>
-
-              <h4 class="rbt-card-title">
-                <a href="course-details.html">React Front To Back</a>
-              </h4>
-              <ul class="rbt-meta">
-                <li><i class="feather-book"></i>20 Lessons</li>
-                <li><i class="feather-users"></i>40 Students</li>
-              </ul>
-              <p class="rbt-card-text">
-                React Js long fact that a reader will be distracted by the
-                readable.
-              </p>
-              <div class="rbt-author-meta mb--20">
-                <div class="rbt-avater">
-                  <a href="#">
-                    <img
-                      src="assets/images/client/avater-01.png"
-                      alt="Sophia Jaymes"
-                    />
-                  </a>
-                </div>
-                <div class="rbt-author-info">
-                  By <a href="profile.html">Patrick</a> In
-                  <a href="#">Languages</a>
-                </div>
-              </div>
-
-              <div class="rbt-card-bottom">
-                <div class="rbt-price">
-                  <span class="current-price">$60</span>
-                  <span class="off-price">$120</span>
-                </div>
-                <a class="rbt-btn-link" href="course-details.html"
-                  >Learn More<i class="feather-arrow-right"></i
-                ></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- End Single Course  -->
-
-        <!-- Start Single Course  -->
-        <div class="col-lg-4 col-md-6 col-12">
-          <div class="rbt-card variation-01 rbt-hover">
-            <div class="rbt-card-img">
-              <a href="course-details.html">
-                <img
-                  src="assets/images/course/course-02.jpg"
-                  alt="Card image"
-                />
-                <div class="rbt-badge-3 bg-white">
-                  <span>-40%</span>
-                  <span>Off</span>
-                </div>
-              </a>
-            </div>
-            <div class="rbt-card-body">
-              <div class="rbt-card-top">
-                <div class="rbt-review">
-                  <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                  </div>
-                  <span class="rating-count"> (15 Reviews)</span>
-                </div>
-                <div class="rbt-bookmark-btn">
-                  <a class="rbt-round-btn" title="Bookmark" href="#"
-                    ><i class="feather-bookmark"></i
-                  ></a>
-                </div>
-              </div>
-              <h4 class="rbt-card-title">
-                <a href="course-details.html">PHP Beginner + Advanced</a>
-              </h4>
-              <ul class="rbt-meta">
-                <li><i class="feather-book"></i>12 Lessons</li>
-                <li><i class="feather-users"></i>50 Students</li>
-              </ul>
-              <p class="rbt-card-text">
-                It is a long established fact that a reader will be distracted
-                by the readable.
-              </p>
-              <div class="rbt-author-meta mb--20">
-                <div class="rbt-avater">
-                  <a href="#">
-                    <img
-                      src="assets/images/client/avatar-02.png"
-                      alt="Sophia Jaymes"
-                    />
-                  </a>
-                </div>
-                <div class="rbt-author-info">
-                  By <a href="profile.html">Angela</a> In
-                  <a href="#">Development</a>
-                </div>
-              </div>
-              <div class="rbt-card-bottom">
-                <div class="rbt-price">
-                  <span class="current-price">$60</span>
-                  <span class="off-price">$120</span>
-                </div>
-                <a class="rbt-btn-link left-icon" href="course-details.html"
-                  ><i class="feather-shopping-cart"></i> Add To Cart</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- End Single Course  -->
-
-        <!-- Start Single Course  -->
-        <div class="col-lg-4 col-md-6 col-12">
-          <div class="rbt-card variation-01 rbt-hover">
-            <div class="rbt-card-img">
-              <a href="course-details.html">
-                <img
-                  src="assets/images/course/course-03.jpg"
-                  alt="Card image"
-                />
-                <div class="rbt-badge-3 bg-white">
-                  <span>-40%</span>
-                  <span>Off</span>
-                </div>
-              </a>
-            </div>
-            <div class="rbt-card-body">
-              <div class="rbt-card-top">
-                <div class="rbt-review">
-                  <div class="rating">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                  </div>
-                  <span class="rating-count"> (5 Reviews)</span>
-                </div>
-                <div class="rbt-bookmark-btn">
-                  <a class="rbt-round-btn" title="Bookmark" href="#"
-                    ><i class="feather-bookmark"></i
-                  ></a>
-                </div>
-              </div>
-              <h4 class="rbt-card-title">
-                <a href="course-details.html">Angular Zero to Mastery</a>
-              </h4>
-              <ul class="rbt-meta">
-                <li><i class="feather-book"></i>8 Lessons</li>
-                <li><i class="feather-users"></i>30 Students</li>
-              </ul>
-              <p class="rbt-card-text">
-                Angular Js long fact that a reader will be distracted by the
-                readable.
-              </p>
-
-              <div class="rbt-author-meta mb--20">
-                <div class="rbt-avater">
-                  <a href="#">
-                    <img
-                      src="assets/images/client/avatar-03.png"
-                      alt="Sophia Jaymes"
-                    />
-                  </a>
-                </div>
-                <div class="rbt-author-info">
-                  By <a href="profile.html">Slaughter</a> In
-                  <a href="#">Languages</a>
-                </div>
-              </div>
-              <div class="rbt-card-bottom">
-                <div class="rbt-price">
-                  <span class="current-price">$80</span>
-                  <span class="off-price">$100</span>
-                </div>
-                <a class="rbt-btn-link" href="course-details.html"
-                  >Learn More<i class="feather-arrow-right"></i
-                ></a>
-              </div>
-            </div>
-          </div>
-        </div>
+            </div></div
+        ></ng-container>
         <!-- End Single Course  -->
       </div>
       <!-- End Card Area -->
@@ -1082,7 +937,7 @@
                 </div>
                 <div class="client-info">
                   <h5 class="title">Martha Maldonado</h5>
-                  <span>Executive Chairman <i>@ Google</i></span>
+                  <span>Executive Chairman <i> Google</i></span>
                 </div>
               </div>
               <div class="description">
@@ -1112,7 +967,7 @@
                 </div>
                 <div class="client-info">
                   <h5 class="title">Michael D. Lovelady</h5>
-                  <span>CEO <i>@ Google</i></span>
+                  <span>CEO <i> Google</i></span>
                 </div>
               </div>
               <div class="description">
@@ -1143,7 +998,7 @@
                 </div>
                 <div class="client-info">
                   <h5 class="title">Valerie J. Creasman</h5>
-                  <span>Executive Designer <i>@ Google</i></span>
+                  <span>Executive Designer <i>. Google</i></span>
                 </div>
               </div>
               <div class="description">
@@ -1173,7 +1028,7 @@
                 </div>
                 <div class="client-info">
                   <h5 class="title">Hannah R. Sutton</h5>
-                  <span>Executive Chairman <i>@ Facebook</i></span>
+                  <span>Executive Chairman <i>. Facebook</i></span>
                 </div>
               </div>
               <div class="description">
@@ -1203,7 +1058,7 @@
                 </div>
                 <div class="client-info">
                   <h5 class="title">Pearl B. Hill</h5>
-                  <span>Chairman SR <i>@ Facebook</i></span>
+                  <span>Chairman SR <i>. Facebook</i></span>
                 </div>
               </div>
               <div class="description">
@@ -1234,7 +1089,7 @@
                 </div>
                 <div class="client-info">
                   <h5 class="title">Mandy F. Wood</h5>
-                  <span>SR Designer <i>@ Google</i></span>
+                  <span>SR Designer <i>. Google</i></span>
                 </div>
               </div>
               <div class="description">
@@ -1265,7 +1120,7 @@
                 </div>
                 <div class="client-info">
                   <h5 class="title">Mildred W. Diaz</h5>
-                  <span>Executive Officer <i>@ Yelp</i></span>
+                  <span>Executive Officer <i>. Yelp</i></span>
                 </div>
               </div>
               <div class="description">
@@ -1295,7 +1150,7 @@
                 </div>
                 <div class="client-info">
                   <h5 class="title">Christopher H. Win</h5>
-                  <span>Product Designer <i>@ Google</i></span>
+                  <span>Product Designer <i>. Google</i></span>
                 </div>
               </div>
               <div class="description">
@@ -1325,7 +1180,7 @@
                 </div>
                 <div class="client-info">
                   <h5 class="title">Martha Maldonado</h5>
-                  <span>Executive Chairman <i>@ Google</i></span>
+                  <span>Executive Chairman <i>. Google</i></span>
                 </div>
               </div>
               <div class="description">
@@ -1360,7 +1215,7 @@
                 </div>
                 <div class="client-info">
                   <h5 class="title">Martha Maldonado</h5>
-                  <span>Executive Chairman <i>@ Google</i></span>
+                  <span>Executive Chairman <i>. Google</i></span>
                 </div>
               </div>
               <div class="description">
@@ -1390,7 +1245,7 @@
                 </div>
                 <div class="client-info">
                   <h5 class="title">Michael D. Lovelady</h5>
-                  <span>CEO <i>@ Google</i></span>
+                  <span>CEO <i>. Google</i></span>
                 </div>
               </div>
               <div class="description">
@@ -1421,7 +1276,7 @@
                 </div>
                 <div class="client-info">
                   <h5 class="title">Valerie J. Creasman</h5>
-                  <span>Executive Designer <i>@ Google</i></span>
+                  <span>Executive Designer <i>. Google</i></span>
                 </div>
               </div>
               <div class="description">
@@ -1451,7 +1306,7 @@
                 </div>
                 <div class="client-info">
                   <h5 class="title">Hannah R. Sutton</h5>
-                  <span>Executive Chairman <i>@ Facebook</i></span>
+                  <span>Executive Chairman <i>. Facebook</i></span>
                 </div>
               </div>
               <div class="description">
@@ -1481,7 +1336,7 @@
                 </div>
                 <div class="client-info">
                   <h5 class="title">Pearl B. Hill</h5>
-                  <span>Chairman SR <i>@ Facebook</i></span>
+                  <span>Chairman SR <i>. Facebook</i></span>
                 </div>
               </div>
               <div class="description">
@@ -1512,7 +1367,7 @@
                 </div>
                 <div class="client-info">
                   <h5 class="title">Mandy F. Wood</h5>
-                  <span>SR Designer <i>@ Google</i></span>
+                  <span>SR Designer <i>. Google</i></span>
                 </div>
               </div>
               <div class="description">
@@ -1543,7 +1398,7 @@
                 </div>
                 <div class="client-info">
                   <h5 class="title">Mildred W. Diaz</h5>
-                  <span>Executive Officer <i>@ Yelp</i></span>
+                  <span>Executive Officer <i>. Yelp</i></span>
                 </div>
               </div>
               <div class="description">
@@ -1573,7 +1428,7 @@
                 </div>
                 <div class="client-info">
                   <h5 class="title">Christopher H. Win</h5>
-                  <span>Product Designer <i>@ Google</i></span>
+                  <span>Product Designer <i>. Google</i></span>
                 </div>
               </div>
               <div class="description">
@@ -1603,7 +1458,7 @@
                 </div>
                 <div class="client-info">
                   <h5 class="title">Martha Maldonado</h5>
-                  <span>Executive Chairman <i>@ Google</i></span>
+                  <span>Executive Chairman <i>. Google</i></span>
                 </div>
               </div>
               <div class="description">
@@ -2733,8 +2588,8 @@
                       >
                     </li>
                     <li>
-                      <a href="mailto:hello@example.com"
-                        ><i class="feather-mail"></i>example@gmail.com</a
+                      <a href="mailto:hello.example.com"
+                        ><i class="feather-mail"></i>example.gmail.com</a
                       >
                     </li>
                   </ul>
@@ -2796,8 +2651,8 @@
                       >
                     </li>
                     <li>
-                      <a href="mailto:hello@example.com"
-                        ><i class="feather-mail"></i>example@gmail.com</a
+                      <a href="mailto:hello.example.com"
+                        ><i class="feather-mail"></i>example.gmail.com</a
                       >
                     </li>
                   </ul>
@@ -2861,8 +2716,8 @@
                       >
                     </li>
                     <li>
-                      <a href="mailto:hello@example.com"
-                        ><i class="feather-mail"></i>example@gmail.com</a
+                      <a href="mailto:hello.example.com"
+                        ><i class="feather-mail"></i>example.gmail.com</a
                       >
                     </li>
                   </ul>
@@ -2924,8 +2779,8 @@
                       >
                     </li>
                     <li>
-                      <a href="mailto:hello@example.com"
-                        ><i class="feather-mail"></i>example@gmail.com</a
+                      <a href="mailto:hello.example.com"
+                        ><i class="feather-mail"></i>example.gmail.com</a
                       >
                     </li>
                   </ul>
@@ -2989,8 +2844,8 @@
                       >
                     </li>
                     <li>
-                      <a href="mailto:hello@example.com"
-                        ><i class="feather-mail"></i>example@gmail.com</a
+                      <a href="mailto:hello.example.com"
+                        ><i class="feather-mail"></i>example.gmail.com</a
                       >
                     </li>
                   </ul>
@@ -3054,8 +2909,8 @@
                       >
                     </li>
                     <li>
-                      <a href="mailto:hello@example.com"
-                        ><i class="feather-mail"></i>example@gmail.com</a
+                      <a href="mailto:hello.example.com"
+                        ><i class="feather-mail"></i>example.gmail.com</a
                       >
                     </li>
                   </ul>
