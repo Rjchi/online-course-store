@@ -15,14 +15,16 @@ declare function countdownT(): any;
 export class HomeComponent {
   CATEGORIES: any[] = [];
   COURSES_TOP: any[] = [];
+  COURSES_SECTIONS: any[] = [];
 
   constructor(public toaster: Toaster, public homeService: HomeService) {}
 
   ngOnInit(): void {
     this.homeService.home().subscribe((response: any) => {
       this.CATEGORIES = response.categories;
-      console.log(response.categories);
+      console.log(response);
       this.COURSES_TOP = response.courses_top;
+      this.COURSES_SECTIONS = response.courses_sections;
     });
 
     setTimeout(() => {
