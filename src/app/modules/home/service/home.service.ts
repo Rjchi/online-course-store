@@ -10,8 +10,8 @@ import { URL_SERVICIOS } from 'src/app/config/config';
 export class HomeService {
   constructor(public http: HttpClient, public authService: AuthService) {}
 
-  home() {
-    let URL = URL_SERVICIOS + 'home/list';
+  home(time_now: string = '') {
+    let URL = URL_SERVICIOS + 'home/list?time_now=' + time_now;
     return this.http.get(URL);
   }
 }
