@@ -1,5 +1,6 @@
-import { Toaster } from 'ngx-toast-notifications';
+import { DatePipe } from '@angular/common';
 import { Component } from '@angular/core';
+import { Toaster } from 'ngx-toast-notifications';
 
 import { HomeService } from './service/home.service';
 
@@ -15,11 +16,17 @@ declare function countdownT(): any;
 export class HomeComponent {
   CATEGORIES: any[] = [];
   COURSES_TOP: any[] = [];
+  CAMPAING_FLASH: any = [];
+  COURSES_FLASH: any[] = [];
   CAMPAING_BANNER: any = [];
   COURSES_BANNER: any[] = [];
   COURSES_SECTIONS: any[] = [];
 
-  constructor(public toaster: Toaster, public homeService: HomeService) {}
+  constructor(
+    public toaster: Toaster,
+    public homeService: HomeService,
+    public datePipe: DatePipe
+  ) {}
 
   ngOnInit(): void {
     let time_now = new Date().getTime();
@@ -28,24 +35,34 @@ export class HomeComponent {
       console.log(response);
       this.CATEGORIES = response.categories;
       this.COURSES_TOP = response.courses_top;
+      this.COURSES_FLASH = response.courses_flash;
       this.COURSES_BANNER = response.courses_banner;
+      this.CAMPAING_FLASH = response.campaing_flash;
       this.CAMPAING_BANNER = response.campaing_banner;
       this.COURSES_SECTIONS = response.courses_sections;
-    });
 
-    setTimeout(() => {
-      HOMEINIT($);
-      countdownT();
-    }, 50);
+      setTimeout(() => {
+        HOMEINIT($);
+        countdownT();
+      }, 50);
+    });
   }
 
   getNewTotal(course: any, campaing_banner: any) {
     if (campaing_banner.type_discount === 1) {
-      return (
+      return Math.round(
         course.price_usd - course.price_usd * (campaing_banner.discount * 0.01)
       );
     } else {
-      return course.price_usd - campaing_banner.discount;
+      return Math.round(course.price_usd - campaing_banner.discount);
+    }
+  }
+
+  getParseDate(date: Date, type: number = 1) {
+    if (type === 1) {
+      return this.datePipe.transform(date, 'YYYY/MM/dd', 'UTC');
+    } else {
+      return this.datePipe.transform(date, 'YYYY-MM-dd', 'UTC');
     }
   }
 }
