@@ -13,6 +13,13 @@ export const routes: Routes = [
       import('./modules/auth/auth.module').then((m) => m.AuthModule),
   },
   {
+    path: 'store',
+    loadChildren: () =>
+      import('./modules/tienda-guest/tienda-guest.module').then(
+        (m) => m.TiendaGuestModule
+      ),
+  },
+  {
     path: '',
     redirectTo: '/',
     pathMatch: 'full',
