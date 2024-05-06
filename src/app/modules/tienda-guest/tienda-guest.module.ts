@@ -1,9 +1,13 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { TiendaGuestRoutingModule } from './tienda-guest-routing.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { TiendaGuestComponent } from './tienda-guest.component';
 import { LandingCourseComponent } from './landing-course/landing-course.component';
+import { TiendaGuestRoutingModule } from './tienda-guest-routing.module';
 
 
 @NgModule({
@@ -13,7 +17,13 @@ import { LandingCourseComponent } from './landing-course/landing-course.componen
   ],
   imports: [
     CommonModule,
-    TiendaGuestRoutingModule
+    TiendaGuestRoutingModule,
+
+    FormsModule,
+    SharedModule,
+    RouterModule,
+    HttpClientModule,
+    ReactiveFormsModule,
   ]
 })
 export class TiendaGuestModule { }
