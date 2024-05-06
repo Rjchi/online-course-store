@@ -58,6 +58,14 @@ export class HomeComponent {
     }
   }
 
+  getTotalPriceCourse(COURSE: any) {
+    if (COURSE.discount_g) {
+      return this.getNewTotal(COURSE, COURSE.discount_g);
+    } else {
+      return COURSE.price_usd;
+    }
+  }
+
   getParseDate(date: Date, type: number = 1) {
     if (type === 1) {
       return this.datePipe.transform(date, 'YYYY/MM/dd', 'UTC');
