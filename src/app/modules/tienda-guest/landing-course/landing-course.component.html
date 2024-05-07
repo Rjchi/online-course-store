@@ -1231,8 +1231,8 @@
                 class="rbt-price-wrapper d-flex flex-wrap align-items-center justify-content-between"
               >
                 <div class="rbt-price">
-                  <span class="current-price">$60.99</span>
-                  <span class="off-price">$84.99</span>
+                  <span class="current-price">${{ course.price_usd }}</span>
+                  <!-- <span class="off-price">$84.99</span> -->
                 </div>
                 <div class="discount-time">
                   <span class="rbt-badge color-danger bg-color-danger-opacity"
@@ -1277,7 +1277,7 @@
                   <li>
                     <span>Start Date</span
                     ><span class="rbt-feature-value rbt-badge-5"
-                      >5 Hrs 20 Min</span
+                      >{{ course.time_parse }}</span
                     >
                   </li>
                   <li>
@@ -1286,15 +1286,15 @@
                   </li>
                   <li>
                     <span>Lectures</span
-                    ><span class="rbt-feature-value rbt-badge-5">50</span>
+                    ><span class="rbt-feature-value rbt-badge-5">{{ course.files_count }}</span>
                   </li>
                   <li>
                     <span>Skill Level</span
-                    ><span class="rbt-feature-value rbt-badge-5">Basic</span>
+                    ><span class="rbt-feature-value rbt-badge-5">{{ course.level }}</span>
                   </li>
                   <li>
                     <span>Language</span
-                    ><span class="rbt-feature-value rbt-badge-5">English</span>
+                    ><span class="rbt-feature-value rbt-badge-5">{{ course.idioma }}</span>
                   </li>
                   <li>
                     <span>Quizzes</span
