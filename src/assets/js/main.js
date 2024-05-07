@@ -1090,8 +1090,26 @@ function HOMEINIT($) {
 
 HOMEINIT(jQuery);
 
-function magnigyPopup ($) {
+function magnigyPopup($) {
   $(".popup-video").magnificPopup({
     type: "iframe",
+  });
+}
+
+function showMoreBtn($) {
+  $.fn.hasShowMore = function () {
+    return this.each(function () {
+      $(this).toggleClass("active");
+      $(this).text("Show Less");
+      $(this).parent(".has-show-more").toggleClass("active");
+      if ($(this).parent(".has-show-more").hasClass("active")) {
+        $(this).text("Show Less");
+      } else {
+        $(this).text("Show More");
+      }
+    });
+  };
+  $(document).on("click", ".rbt-show-more-btn", function () {
+    $(this).hasShowMore();
   });
 }
