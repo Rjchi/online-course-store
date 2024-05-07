@@ -1089,3 +1089,9 @@ function HOMEINIT($) {
 }
 
 HOMEINIT(jQuery);
+
+function magnigyPopup ($) {
+  $(".popup-video").magnificPopup({
+    type: "iframe",
+  });
+}
