@@ -5,6 +5,7 @@ import { TiendaGuestService } from '../service/tienda-guest.service';
 
 declare function HOMEINIT([]): any;
 declare var $: any;
+declare function magnigyPopup([]): any;
 @Component({
   selector: 'app-landing-course',
   templateUrl: './landing-course.component.html',
@@ -27,10 +28,11 @@ export class LandingCourseComponent {
     this.tiendaGuestService.showCourse(this.slug).subscribe((response: any) => {
       console.log(response);
       this.course = response.course;
-    });
 
-    setTimeout(() => {
-      HOMEINIT($);
-    }, 50);
+      setTimeout(() => {
+        HOMEINIT($);
+        magnigyPopup($);
+      }, 50);
+    });
   }
 }
