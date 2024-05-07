@@ -15,6 +15,8 @@ declare function showMoreBtn([]): any;
 export class LandingCourseComponent {
   course: any;
   slug: string = '';
+  courses_relateds: any[] = [];
+  courses_instructor: any[] = [];
 
   constructor(
     public tiendaGuestService: TiendaGuestService,
@@ -29,6 +31,8 @@ export class LandingCourseComponent {
     this.tiendaGuestService.showCourse(this.slug).subscribe((response: any) => {
       console.log(response);
       this.course = response.course;
+      this.courses_relateds = response.course_relateds;
+      this.courses_instructor = response.course_instructor;
 
       setTimeout(() => {
         HOMEINIT($);
