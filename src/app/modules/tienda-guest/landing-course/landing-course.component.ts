@@ -6,6 +6,7 @@ import { TiendaGuestService } from '../service/tienda-guest.service';
 declare function HOMEINIT([]): any;
 declare var $: any;
 declare function magnigyPopup([]): any;
+declare function showMoreBtn([]): any;
 @Component({
   selector: 'app-landing-course',
   templateUrl: './landing-course.component.html',
@@ -32,6 +33,7 @@ export class LandingCourseComponent {
       setTimeout(() => {
         HOMEINIT($);
         magnigyPopup($);
+        showMoreBtn($);
       }, 50);
     });
   }
