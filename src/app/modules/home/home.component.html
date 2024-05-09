@@ -244,7 +244,12 @@
                 <div class="col-md-6 col-sm-12 col-12 py-3">
                   <div class="rbt-card variation-01 rbt-hover">
                     <div class="rbt-card-img">
-                      <a [routerLink]="['store/landig-course/', COURSE_F.slug]">
+                      <a
+                        [routerLink]="['store/landig-course/', COURSE_F.slug]"
+                        [queryParams]="{
+                          campaing_discount: CAMPAING_FLASH._id
+                        }"
+                      >
                         <img [src]="COURSE_F.image" alt="Card image" />
                         <div
                           class="rbt-badge-3 bg-white"
@@ -281,6 +286,9 @@
                       <h4 class="rbt-card-title">
                         <a
                           [routerLink]="['store/landig-course/', COURSE_F.slug]"
+                          [queryParams]="{
+                            campaing_discount: CAMPAING_FLASH._id
+                          }"
                           >{{ COURSE_F.title }}</a
                         >
                       </h4>
@@ -301,6 +309,9 @@
                         <a
                           class="rbt-btn-link"
                           [routerLink]="['store/landig-course/', COURSE_F.slug]"
+                          [queryParams]="{
+                            campaing_discount: CAMPAING_FLASH._id
+                          }"
                           >Learn More<i class="feather-arrow-right"></i
                         ></a>
                       </div>
