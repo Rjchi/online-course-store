@@ -10,14 +10,15 @@ import { URL_SERVICIOS } from 'src/app/config/config';
 export class TiendaGuestService {
   constructor(public http: HttpClient, public authService: AuthService) {}
 
-  showCourse(slug: any) {
+  showCourse(slug: any, campaing_special = null) {
     let URL =
       URL_SERVICIOS +
       'home/landig-course/' +
       slug +
       '?time_now=' +
-      new Date().getTime();
-
+      new Date().getTime() +
+      '&campaing_special=' +
+      (campaing_special ? campaing_special : '');
     return this.http.get(URL);
   }
 }
