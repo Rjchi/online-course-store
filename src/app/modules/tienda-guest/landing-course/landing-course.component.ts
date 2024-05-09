@@ -41,4 +41,22 @@ export class LandingCourseComponent {
       }, 50);
     });
   }
+
+  getNewTotal(course: any, campaing_banner: any) {
+    if (campaing_banner.type_discount === 1) {
+      return Math.round(
+        course.price_usd - course.price_usd * (campaing_banner.discount * 0.01)
+      );
+    } else {
+      return Math.round(course.price_usd - campaing_banner.discount);
+    }
+  }
+
+  getTotalPriceCourse(COURSE: any) {
+    if (COURSE.discount_g) {
+      return this.getNewTotal(COURSE, COURSE.discount_g);
+    } else {
+      return COURSE.price_usd;
+    }
+  }
 }
