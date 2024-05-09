@@ -25,3 +25,7 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+Obs --> Flujo de información de un punto A a un punto B
+Sub --> Enviar información a diferentes tipos de subscriptores que se encuentren en la aplicación
+BehaviorSubject --> Nos devuelve el ultimo valor que se envia
