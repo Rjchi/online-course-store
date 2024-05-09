@@ -24,6 +24,8 @@ export class LandingCourseComponent {
   ) {}
 
   ngOnInit(): void {
+    window.scroll(0, 0);
+
     this.activatedRoute.params.subscribe((params: any) => {
       this.slug = params.slug;
     });
