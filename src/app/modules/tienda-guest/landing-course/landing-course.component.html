@@ -1068,10 +1068,10 @@
                         *ngIf="course.discount_g"
                       >
                         <span *ngIf="course.discount_g.type_discount === 1"
-                          >-{{ course.discount }}%</span
+                          >-{{ course.discount_g.discount }}%</span
                         >
                         <span *ngIf="course.discount_g.type_discount === 2"
-                          >-{{ course.discount }}USD</span
+                          >-{{ course.discount_g.discount }}USD</span
                         >
                         <span>Off</span>
                       </div>
@@ -1120,9 +1120,11 @@
                     <div class="rbt-card-bottom">
                       <div class="rbt-price">
                         <span class="current-price"
+                          >${{ getTotalPriceCourse(course) }}</span
+                        >
+                        <span class="off-price" *ngIf="course.discount_g"
                           >${{ course.price_usd }}</span
                         >
-                        <!-- <span class="off-price">$100</span> -->
                       </div>
                       <a class="rbt-btn-link" href="course-details.html"
                         >Learn More<i class="feather-arrow-right"></i
@@ -1150,7 +1152,7 @@
               <div class="video-content">
                 <img
                   class="w-100 rbt-radius"
-                  src="assets/images/others/video-01.jpg"
+                  [src]="course.image"
                   alt="Video Images"
                 />
                 <div class="position-to-top">
@@ -1170,8 +1172,12 @@
                 class="rbt-price-wrapper d-flex flex-wrap align-items-center justify-content-between"
               >
                 <div class="rbt-price">
-                  <span class="current-price">${{ course.price_usd }}</span>
-                  <!-- <span class="off-price">$84.99</span> -->
+                  <span class="current-price"
+                    >${{ getTotalPriceCourse(course) }}</span
+                  >
+                  <span class="off-price" *ngIf="course.discount_g"
+                    >${{ course.price_usd }}</span
+                  >
                 </div>
                 <div class="discount-time">
                   <span class="rbt-badge color-danger bg-color-danger-opacity"
@@ -1327,10 +1333,10 @@
                 <img [src]="course.image" alt="image" />
                 <div class="rbt-badge-3 bg-white" *ngIf="course.discount_g">
                   <span *ngIf="course.discount_g.type_discount === 1"
-                    >-{{ course.discount }}%</span
+                    >-{{ course.discount_g.discount }}%</span
                   >
                   <span *ngIf="course.discount_g.type_discount === 2"
-                    >-{{ course.discount }}USD</span
+                    >-{{ course.discount_g.discount }}USD</span
                   >
                   <span>Off</span>
                 </div>
@@ -1378,8 +1384,12 @@
               </div>
               <div class="rbt-card-bottom">
                 <div class="rbt-price">
-                  <span class="current-price">${{ course.price_usd }}</span>
-                  <!-- <span class="off-price">$100</span> -->
+                  <span class="current-price"
+                    >${{ getTotalPriceCourse(course) }}</span
+                  >
+                  <span class="off-price" *ngIf="course.discount_g"
+                    >${{ course.price_usd }}</span
+                  >
                 </div>
                 <a class="rbt-btn-link" href="course-details.html"
                   >Learn More<i class="feather-arrow-right"></i

@@ -62,7 +62,12 @@
                   <div class="swiper-slide">
                     <div class="rbt-card variation-01 rbt-hover">
                       <div class="rbt-card-img">
-                        <a href="course-details.html">
+                        <a
+                          [routerLink]="['store/landig-course/', COURSE_B.slug]"
+                          [queryParams]="{
+                            campaing_discount: CAMPAING_BANNER._id
+                          }"
+                        >
                           <img [src]="COURSE_B.image" alt="Card image" />
                           <div class="rbt-badge-3 bg-white">
                             <span *ngIf="CAMPAING_BANNER.type_discount === 1"
@@ -81,7 +86,16 @@
                           <li><i class="feather-users"></i>50 Students</li>
                         </ul>
                         <h4 class="rbt-card-title">
-                          <a href="course-details.html">{{ COURSE_B.title }}</a>
+                          <a
+                            [routerLink]="[
+                              'store/landig-course/',
+                              COURSE_B.slug
+                            ]"
+                            [queryParams]="{
+                              campaing_discount: CAMPAING_BANNER._id
+                            }"
+                            >{{ COURSE_B.title }}</a
+                          >
                         </h4>
                         <p class="rbt-card-text">
                           {{ COURSE_B.subtitle }}
@@ -107,7 +121,15 @@
                               >${{ COURSE_B.price_usd }}</span
                             >
                           </div>
-                          <a class="rbt-btn-link" href="course-details.html"
+                          <a
+                            class="rbt-btn-link"
+                            [routerLink]="[
+                              'store/landig-course/',
+                              COURSE_B.slug
+                            ]"
+                            [queryParams]="{
+                              campaing_discount: CAMPAING_BANNER._id
+                            }"
                             >Learn More<i class="feather-arrow-right"></i
                           ></a>
                         </div>
@@ -222,11 +244,23 @@
                 <div class="col-md-6 col-sm-12 col-12 py-3">
                   <div class="rbt-card variation-01 rbt-hover">
                     <div class="rbt-card-img">
-                      <a href="course-details.html">
+                      <a
+                        [routerLink]="['store/landig-course/', COURSE_F.slug]"
+                        [queryParams]="{
+                          campaing_discount: CAMPAING_FLASH._id
+                        }"
+                      >
                         <img [src]="COURSE_F.image" alt="Card image" />
-                        <div class="rbt-badge-3 bg-white" *ngIf="CAMPAING_FLASH">
-                          <span *ngIf="CAMPAING_FLASH.type_discount === 1">-{{ CAMPAING_FLASH.discount }}%</span>
-                          <span *ngIf="CAMPAING_FLASH.type_discount === 2">-{{ CAMPAING_FLASH.discount }}USD</span>
+                        <div
+                          class="rbt-badge-3 bg-white"
+                          *ngIf="CAMPAING_FLASH"
+                        >
+                          <span *ngIf="CAMPAING_FLASH.type_discount === 1"
+                            >-{{ CAMPAING_FLASH.discount }}%</span
+                          >
+                          <span *ngIf="CAMPAING_FLASH.type_discount === 2"
+                            >-{{ CAMPAING_FLASH.discount }}USD</span
+                          >
                           <span>Off</span>
                         </div>
                       </a>
@@ -250,7 +284,13 @@
                         </div>
                       </div>
                       <h4 class="rbt-card-title">
-                        <a href="course-details.html">{{ COURSE_F.title }}</a>
+                        <a
+                          [routerLink]="['store/landig-course/', COURSE_F.slug]"
+                          [queryParams]="{
+                            campaing_discount: CAMPAING_FLASH._id
+                          }"
+                          >{{ COURSE_F.title }}</a
+                        >
                       </h4>
                       <ul class="rbt-meta">
                         <li><i class="feather-book"></i>20 Lessons</li>
@@ -266,7 +306,12 @@
                             >${{ COURSE_F.price_usd }}</span
                           >
                         </div>
-                        <a class="rbt-btn-link" href="course-details.html"
+                        <a
+                          class="rbt-btn-link"
+                          [routerLink]="['store/landig-course/', COURSE_F.slug]"
+                          [queryParams]="{
+                            campaing_discount: CAMPAING_FLASH._id
+                          }"
                           >Learn More<i class="feather-arrow-right"></i
                         ></a>
                       </div>
@@ -305,11 +350,18 @@
           <div class="col-lg-4 col-md-6 col-12">
             <div class="rbt-card variation-01 rbt-hover">
               <div class="rbt-card-img">
-                <a href="course-details.html">
+                <a [routerLink]="['store/landig-course/', COURSE_TOP.slug]">
                   <img [src]="COURSE_TOP.image" alt="Card image" />
-                  <div class="rbt-badge-3 bg-white" *ngIf="COURSE_TOP.discount_g">
-                    <span *ngIf="COURSE_TOP.discount_g.type_discount === 1">-{{ COURSE_TOP.discount_g.discount }}%</span>
-                    <span *ngIf="COURSE_TOP.discount_g.type_discount === 2">-{{ COURSE_TOP.discount_g.discount }}USD</span>
+                  <div
+                    class="rbt-badge-3 bg-white"
+                    *ngIf="COURSE_TOP.discount_g"
+                  >
+                    <span *ngIf="COURSE_TOP.discount_g.type_discount === 1"
+                      >-{{ COURSE_TOP.discount_g.discount }}%</span
+                    >
+                    <span *ngIf="COURSE_TOP.discount_g.type_discount === 2"
+                      >-{{ COURSE_TOP.discount_g.discount }}USD</span
+                    >
                     <span>Off</span>
                   </div>
                 </a>
@@ -334,7 +386,9 @@
                 </div>
 
                 <h4 class="rbt-card-title">
-                  <a href="course-details.html">{{ COURSE_TOP.title }}</a>
+                  <a [routerLink]="['store/landig-course/', COURSE_TOP.slug]">{{
+                    COURSE_TOP.title
+                  }}</a>
                 </h4>
                 <ul class="rbt-meta">
                   <li><i class="feather-book"></i>20 Lessons</li>
@@ -364,9 +418,13 @@
                     <span class="current-price"
                       >${{ getTotalPriceCourse(COURSE_TOP) }}</span
                     >
-                    <span class="off-price" *ngIf="COURSE_TOP.discount_g">${{ COURSE_TOP.price_usd }}</span>
+                    <span class="off-price" *ngIf="COURSE_TOP.discount_g"
+                      >${{ COURSE_TOP.price_usd }}</span
+                    >
                   </div>
-                  <a class="rbt-btn-link" href="course-details.html"
+                  <a
+                    class="rbt-btn-link"
+                    [routerLink]="['store/landig-course/', COURSE_TOP.slug]"
                     >Learn More<i class="feather-arrow-right"></i
                   ></a>
                 </div>
@@ -1323,11 +1381,22 @@
                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
                       <div class="rbt-card variation-01 rbt-hover">
                         <div class="rbt-card-img">
-                          <a href="course-details.html">
+                          <a
+                            [routerLink]="['store/landig-course/', COURSE.slug]"
+                          >
                             <img [src]="COURSE.image" alt="Card image" />
-                            <div class="rbt-badge-3 bg-white" *ngIf="COURSE.discount_g">
-                              <span *ngIf="COURSE.discount_g.type_discount === 1">-{{ COURSE.discount_g.discount }}%</span>
-                              <span *ngIf="COURSE.discount_g.type_discount === 2">-{{ COURSE.discount_g.discount }}USD</span>
+                            <div
+                              class="rbt-badge-3 bg-white"
+                              *ngIf="COURSE.discount_g"
+                            >
+                              <span
+                                *ngIf="COURSE.discount_g.type_discount === 1"
+                                >-{{ COURSE.discount_g.discount }}%</span
+                              >
+                              <span
+                                *ngIf="COURSE.discount_g.type_discount === 2"
+                                >-{{ COURSE.discount_g.discount }}USD</span
+                              >
                               <span>Off</span>
                             </div>
                           </a>
@@ -1351,7 +1420,13 @@
                             </div>
                           </div>
                           <h4 class="rbt-card-title">
-                            <a href="course-details.html">{{ COURSE.title }}</a>
+                            <a
+                              [routerLink]="[
+                                'store/landig-course/',
+                                COURSE.slug
+                              ]"
+                              >{{ COURSE.title }}</a
+                            >
                           </h4>
                           <ul class="rbt-meta">
                             <li><i class="feather-book"></i>20 Lessons</li>
@@ -1363,9 +1438,16 @@
                               <span class="current-price"
                                 >${{ getTotalPriceCourse(COURSE) }}</span
                               >
-                              <span class="off-price" *ngIf="COURSE.discount_g">${{ COURSE.discount_g.price_usd }}USD</span>
+                              <span class="off-price" *ngIf="COURSE.discount_g"
+                                >${{ COURSE.discount_g.price_usd }}USD</span
+                              >
                             </div>
-                            <a class="rbt-btn-link" href="course-details.html"
+                            <a
+                              class="rbt-btn-link"
+                              [routerLink]="[
+                                'store/landig-course/',
+                                COURSE.slug
+                              ]"
                               >Learn More<i class="feather-arrow-right"></i
                             ></a>
                           </div>

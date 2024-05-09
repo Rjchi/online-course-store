@@ -15,6 +15,7 @@ declare function showMoreBtn([]): any;
 export class LandingCourseComponent {
   course: any;
   slug: string = '';
+  campaing_special: any = null;
   courses_relateds: any[] = [];
   courses_instructor: any[] = [];
 
@@ -24,11 +25,17 @@ export class LandingCourseComponent {
   ) {}
 
   ngOnInit(): void {
+    window.scroll(0, 0);
+
     this.activatedRoute.params.subscribe((params: any) => {
       this.slug = params.slug;
     });
 
-    this.tiendaGuestService.showCourse(this.slug).subscribe((response: any) => {
+    this.activatedRoute.queryParams.subscribe((params: any) => {
+      this.campaing_special = params.campaing_discount;
+    })
+
+    this.tiendaGuestService.showCourse(this.slug, this.campaing_special).subscribe((response: any) => {
       console.log(response);
       this.course = response.course;
       this.courses_relateds = response.course_relateds;
@@ -40,5 +47,23 @@ export class LandingCourseComponent {
         showMoreBtn($);
       }, 50);
     });
+  }
+
+  getNewTotal(course: any, campaing_banner: any) {
+    if (campaing_banner.type_discount === 1) {
+      return Math.round(
+        course.price_usd - course.price_usd * (campaing_banner.discount * 0.01)
+      );
+    } else {
+      return Math.round(course.price_usd - campaing_banner.discount);
+    }
+  }
+
+  getTotalPriceCourse(COURSE: any) {
+    if (COURSE.discount_g) {
+      return this.getNewTotal(COURSE, COURSE.discount_g);
+    } else {
+      return COURSE.price_usd;
+    }
   }
 }

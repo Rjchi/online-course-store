@@ -29,6 +29,8 @@ export class HomeComponent {
   ) {}
 
   ngOnInit(): void {
+    window.scroll(0, 0);
+
     let time_now = new Date().getTime();
 
     this.homeService.home(time_now + '').subscribe((response: any) => {
