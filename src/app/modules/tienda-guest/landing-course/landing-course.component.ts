@@ -15,6 +15,7 @@ declare function showMoreBtn([]): any;
 export class LandingCourseComponent {
   course: any;
   slug: string = '';
+  campaing_special: any = null;
   courses_relateds: any[] = [];
   courses_instructor: any[] = [];
 
@@ -30,7 +31,11 @@ export class LandingCourseComponent {
       this.slug = params.slug;
     });
 
-    this.tiendaGuestService.showCourse(this.slug).subscribe((response: any) => {
+    this.activatedRoute.queryParams.subscribe((params: any) => {
+      this.campaing_special = params.campaing_discount;
+    })
+
+    this.tiendaGuestService.showCourse(this.slug, this.campaing_special).subscribe((response: any) => {
       console.log(response);
       this.course = response.course;
       this.courses_relateds = response.course_relateds;
