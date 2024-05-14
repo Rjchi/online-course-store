@@ -23,4 +23,21 @@ export class CartService {
   public currentData$ = this.cart.asObservable();
 
   constructor(public http: HttpClient, public authService: AuthService) {}
+
+  addCart(data: any) {
+    /**---------------------------------------------------------------
+     * | Traemos todo lo que este almacenado en el carrito de compra
+     * ---------------------------------------------------------------*/
+    let listCart = this.cart.getValue();
+    let index = listCart.findIndex((item) => item.course._id === data.course._id);
+
+    if (index === -1) {
+      listCart.unshift(data);
+    }
+
+    /**----------------------------------------------
+     * | next es similar a push en un array normal
+     * ----------------------------------------------*/
+    this.cart.next(listCart);
+  }
 }
