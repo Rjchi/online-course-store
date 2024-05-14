@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 
 import { AuthService } from '../../auth/service/auth.service';
-import { URL_SERVICIOS } from 'src/app/config/config';
 
 @Injectable({
   providedIn: 'root',
@@ -29,7 +28,9 @@ export class CartService {
      * | Traemos todo lo que este almacenado en el carrito de compra
      * ---------------------------------------------------------------*/
     let listCart = this.cart.getValue();
-    let index = listCart.findIndex((item) => item.course._id === data.course._id);
+    let index = listCart.findIndex(
+      (item) => item.course._id === data.course._id
+    );
 
     if (index === -1) {
       listCart.unshift(data);
@@ -39,5 +40,9 @@ export class CartService {
      * | next es similar a push en un array normal
      * ----------------------------------------------*/
     this.cart.next(listCart);
+  }
+
+  resetData() {
+    this.cart.next([]);
   }
 }
