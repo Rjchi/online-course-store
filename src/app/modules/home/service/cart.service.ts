@@ -45,4 +45,21 @@ export class CartService {
   resetData() {
     this.cart.next([]);
   }
+
+  removeItemCart(data: any) {
+    /**------------------------------------------------------
+     * | Se actualiza el carrito con los registros actuales
+     * | luego de la eliminación
+     * ------------------------------------------------------*/
+    let listCart = this.cart.getValue();
+    let index = listCart.findIndex(
+      (item) => item.course._id === data.course._id
+    );
+
+    if (index === -1) {
+      listCart.splice(index, 1);
+    }
+
+    this.cart.next(listCart);
+  }
 }
