@@ -81,7 +81,7 @@ export class HomeComponent {
     }
   }
 
-  addCart(course: any) {
+  addCart(course: any, campaing: any = null) {
     if (!this.user) {
       this.toaster.open({
         text: 'NECESITAS INGRESAR CON TU CUENTA AL SISTEMA',
@@ -93,16 +93,26 @@ export class HomeComponent {
       return;
     }
 
+    if (campaing) {
+      course.discount_g = campaing;
+    }
+
     let data = {
-      total: course.price_usd,
+      total: this.getTotalPriceCourse(course),
       course: { _id: course._id },
-      discount: null,
-      subtotal: course.price_usd,
+      discount: course.discount_g.discount ? course.discount_g.discount : null,
+      subtotal: this.getTotalPriceCourse(course),
       price_unit: course.price_usd,
       code_cupon: null,
-      type_discount: null,
-      code_discount: null,
-      campaing_discount: null,
+      type_discount: course.discount_g.type_discount
+        ? course.discount_g.type_discount
+        : null,
+      code_discount: course.discount_g._id
+        ? course.discount_g._id
+        : null,
+      campaing_discount: course.discount_g.type_campaing
+        ? course.discount_g.type_campaing
+        : null,
     };
 
     this.cartService.registerCart(data).subscribe((response: any) => {
