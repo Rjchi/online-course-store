@@ -25,7 +25,7 @@ export class HeaderComponent {
      * | Llamamos al observador
      * --------------------------*/
     this.cartService.currentData$.subscribe((response: any) => {
-      console.log("header", response);
+      console.log('header', response);
       this.carts = response;
       /**-----------------------------------------------------------------------
        * | reduce(acumulador, iterable) => acumulador + iterable, valorInicial
@@ -35,6 +35,15 @@ export class HeaderComponent {
           accumulator + currentValue.total,
         0
       );
+    });
+
+    /**--------------------------------------------------------------------
+     * | Agregamos los cursos que ya esten en la base de datos al bihevor
+     * --------------------------------------------------------------------*/
+    this.cartService.listCart().subscribe((response: any) => {
+      response.carts.forEach((cart: any) => {
+        this.cartService.addCart(cart);
+      });
     });
   }
 
