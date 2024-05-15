@@ -20,7 +20,13 @@ export class HeaderComponent {
     this.user = this.authService.user;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    /**----------------------------------------------------------------
+     * | Esto es para evitar que se añadan los cursos varias veces
+     * | al carrito de compras
+     * ----------------------------------------------------------------*/
+    this.cartService.resetData();
+
     /**--------------------------
      * | Llamamos al observador
      * --------------------------*/
