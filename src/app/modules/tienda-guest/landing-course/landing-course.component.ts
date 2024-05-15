@@ -1,6 +1,8 @@
+import { Toaster } from 'ngx-toast-notifications';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { CartService } from '../../home/service/cart.service';
 import { TiendaGuestService } from '../service/tienda-guest.service';
 
 declare function HOMEINIT([]): any;
@@ -19,13 +21,18 @@ export class LandingCourseComponent {
   courses_relateds: any[] = [];
   courses_instructor: any[] = [];
 
+  user: any;
+
   constructor(
+    public toaster: Toaster,
+    public cartService: CartService,
+    public activatedRoute: ActivatedRoute,
     public tiendaGuestService: TiendaGuestService,
-    public activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     window.scroll(0, 0);
+    this.user = this.cartService.authService.user;
 
     this.activatedRoute.params.subscribe((params: any) => {
       this.slug = params.slug;
@@ -65,5 +72,54 @@ export class LandingCourseComponent {
     } else {
       return COURSE.price_usd;
     }
+  }
+
+  addCart() {
+    if (!this.user) {
+      this.toaster.open({
+        text: 'NECESITAS INGRESAR CON TU CUENTA AL SISTEMA',
+        caption: 'VALIDATIONS',
+        type: 'danger',
+      });
+      this.cartService.authService.router.navigateByUrl('auth/login');
+
+      return;
+    }
+
+    let data = {
+      total: this.getTotalPriceCourse(this.course),
+      course: { _id: this.course._id },
+      discount: this.course.discount_g ? this.course.discount_g.discount : null,
+      subtotal: this.getTotalPriceCourse(this.course),
+      price_unit: this.course.price_usd,
+      code_cupon: null,
+      type_discount: this.course.discount_g
+        ? this.course.discount_g.type_discount
+        : null,
+      code_discount: this.course.discount_g
+        ? this.course.discount_g._id
+        : null,
+      campaing_discount: this.course.discount_g
+        ? this.course.discount_g.type_campaing
+        : null,
+    };
+
+    this.cartService.registerCart(data).subscribe((response: any) => {
+      if (response.message && response.message === 403) {
+        this.toaster.open({
+          text: response.message_text,
+          caption: 'VALIDATIONS',
+          type: 'danger',
+        });
+      } else {
+        this.cartService.addCart(response.cart);
+
+        this.toaster.open({
+          text: response.message_text,
+          caption: 'VALIDATIONS',
+          type: 'primary',
+        });
+      }
+    });
   }
 }

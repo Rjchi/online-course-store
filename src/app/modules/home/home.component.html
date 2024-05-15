@@ -82,7 +82,10 @@
                       </div>
                       <div class="rbt-card-body">
                         <ul class="rbt-meta">
-                          <li><i class="feather-book"></i>{{ COURSE_B.n_clases }} Lessons</li>
+                          <li>
+                            <i class="feather-book"></i
+                            >{{ COURSE_B.n_clases }} Lessons
+                          </li>
                           <li><i class="feather-users"></i>50 Students</li>
                         </ul>
                         <h4 class="rbt-card-title">
@@ -121,7 +124,7 @@
                               >${{ COURSE_B.price_usd }}</span
                             >
                           </div>
-                          <a
+                          <!-- <a
                             class="rbt-btn-link"
                             [routerLink]="[
                               'store/landig-course/',
@@ -131,7 +134,16 @@
                               campaing_discount: CAMPAING_BANNER._id
                             }"
                             >Learn More<i class="feather-arrow-right"></i
-                          ></a>
+                          ></a> -->
+                          <a
+                            class="rbt-btn-link left-icon"
+                            onclick="return false;"
+                            (click)="addCart(COURSE_B, CAMPAING_BANNER)"
+                            href="#"
+                            ><i class="feather-shopping-cart">
+                              Add To Cart</i
+                            ></a
+                          >
                         </div>
                       </div>
                     </div>
@@ -293,7 +305,10 @@
                         >
                       </h4>
                       <ul class="rbt-meta">
-                        <li><i class="feather-book"></i>{{ COURSE_F.n_clases }} Lessons</li>
+                        <li>
+                          <i class="feather-book"></i
+                          >{{ COURSE_F.n_clases }} Lessons
+                        </li>
                         <li><i class="feather-users"></i>40 Students</li>
                       </ul>
 
@@ -306,14 +321,21 @@
                             >${{ COURSE_F.price_usd }}</span
                           >
                         </div>
-                        <a
+                        <!-- <a
                           class="rbt-btn-link"
                           [routerLink]="['store/landig-course/', COURSE_F.slug]"
                           [queryParams]="{
                             campaing_discount: CAMPAING_FLASH._id
                           }"
                           >Learn More<i class="feather-arrow-right"></i
-                        ></a>
+                        ></a> -->
+                        <a
+                          class="rbt-btn-link left-icon"
+                          onclick="return false;"
+                          (click)="addCart(COURSE_F, CAMPAING_FLASH)"
+                          href="#"
+                          ><i class="feather-shopping-cart"> Add To Cart</i></a
+                        >
                       </div>
                     </div>
                   </div>
@@ -391,7 +413,10 @@
                   }}</a>
                 </h4>
                 <ul class="rbt-meta">
-                  <li><i class="feather-book"></i>{{ COURSE_TOP.n_clases }} Lessons</li>
+                  <li>
+                    <i class="feather-book"></i
+                    >{{ COURSE_TOP.n_clases }} Lessons
+                  </li>
                   <li><i class="feather-users"></i>40 Students</li>
                 </ul>
                 <p class="rbt-card-text">
@@ -423,14 +448,17 @@
                     >
                   </div>
                   <a
-                    class="rbt-btn-link"
-                    [routerLink]="['store/landig-course/', COURSE_TOP.slug]"
-                    >Learn More<i class="feather-arrow-right"></i
-                  ></a>
+                    class="rbt-btn-link left-icon"
+                    onclick="return false;"
+                    (click)="addCart(COURSE_TOP)"
+                    href="#"
+                    ><i class="feather-shopping-cart"> Add To Cart</i></a
+                  >
                 </div>
               </div>
-            </div></div
-        ></ng-container>
+            </div>
+          </div></ng-container
+        >
         <!-- End Single Course  -->
       </div>
       <!-- End Card Area -->
@@ -1429,7 +1457,10 @@
                             >
                           </h4>
                           <ul class="rbt-meta">
-                            <li><i class="feather-book"></i>{{ COURSE.n_clases }} Lessons</li>
+                            <li>
+                              <i class="feather-book"></i
+                              >{{ COURSE.n_clases }} Lessons
+                            </li>
                             <li><i class="feather-users"></i>40 Students</li>
                           </ul>
 
@@ -1443,13 +1474,14 @@
                               >
                             </div>
                             <a
-                              class="rbt-btn-link"
-                              [routerLink]="[
-                                'store/landig-course/',
-                                COURSE.slug
-                              ]"
-                              >Learn More<i class="feather-arrow-right"></i
-                            ></a>
+                              class="rbt-btn-link left-icon"
+                              onclick="return false;"
+                              (click)="addCart(COURSE)"
+                              href="#"
+                              ><i class="feather-shopping-cart">
+                                Add To Cart</i
+                              ></a
+                            >
                           </div>
                         </div>
                       </div>
