@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { Toaster } from 'ngx-toast-notifications';
 
 import { HomeService } from './service/home.service';
+import { CartService } from './service/cart.service';
 
 declare function HOMEINIT([]): any;
 declare var $: any;
@@ -22,14 +23,18 @@ export class HomeComponent {
   COURSES_BANNER: any[] = [];
   COURSES_SECTIONS: any[] = [];
 
+  user: any;
+
   constructor(
     public toaster: Toaster,
+    public datePipe: DatePipe,
     public homeService: HomeService,
-    public datePipe: DatePipe
+    public cartService: CartService
   ) {}
 
   ngOnInit(): void {
     window.scroll(0, 0);
+    this.user = this.cartService.authService.user;
 
     let time_now = new Date().getTime();
 
@@ -74,5 +79,48 @@ export class HomeComponent {
     } else {
       return this.datePipe.transform(date, 'YYYY-MM-dd', 'UTC');
     }
+  }
+
+  addCart(course: any) {
+    if (!this.user) {
+      this.toaster.open({
+        text: 'NECESITAS INGRESAR CON TU CUENTA AL SISTEMA',
+        caption: 'VALIDATIONS',
+        type: 'danger',
+      });
+      this.cartService.authService.router.navigateByUrl('auth/login');
+
+      return;
+    }
+
+    let data = {
+      total: course.price_usd,
+      course: { _id: course._id },
+      discount: null,
+      subtotal: course.price_usd,
+      price_unit: course.price_usd,
+      code_cupon: null,
+      type_discount: null,
+      code_discount: null,
+      campaing_discount: null,
+    };
+
+    this.cartService.registerCart(data).subscribe((response: any) => {
+      if (response.message && response.message === 403) {
+        this.toaster.open({
+          text: response.message_text,
+          caption: 'VALIDATIONS',
+          type: 'danger',
+        });
+      } else {
+        this.cartService.addCart(response.cart);
+
+        this.toaster.open({
+          text: response.message_text,
+          caption: 'VALIDATIONS',
+          type: 'primary',
+        });
+      }
+    });
   }
 }
