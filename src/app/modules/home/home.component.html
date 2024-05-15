@@ -124,7 +124,7 @@
                               >${{ COURSE_B.price_usd }}</span
                             >
                           </div>
-                          <a
+                          <!-- <a
                             class="rbt-btn-link"
                             [routerLink]="[
                               'store/landig-course/',
@@ -134,7 +134,16 @@
                               campaing_discount: CAMPAING_BANNER._id
                             }"
                             >Learn More<i class="feather-arrow-right"></i
-                          ></a>
+                          ></a> -->
+                          <a
+                            class="rbt-btn-link left-icon"
+                            onclick="return false;"
+                            (click)="addCart(COURSE_B)"
+                            href="#"
+                            ><i class="feather-shopping-cart">
+                              Add To Cart</i
+                            ></a
+                          >
                         </div>
                       </div>
                     </div>
@@ -312,14 +321,21 @@
                             >${{ COURSE_F.price_usd }}</span
                           >
                         </div>
-                        <a
+                        <!-- <a
                           class="rbt-btn-link"
                           [routerLink]="['store/landig-course/', COURSE_F.slug]"
                           [queryParams]="{
                             campaing_discount: CAMPAING_FLASH._id
                           }"
                           >Learn More<i class="feather-arrow-right"></i
-                        ></a>
+                        ></a> -->
+                        <a
+                          class="rbt-btn-link left-icon"
+                          onclick="return false;"
+                          (click)="addCart(COURSE_F)"
+                          href="#"
+                          ><i class="feather-shopping-cart"> Add To Cart</i></a
+                        >
                       </div>
                     </div>
                   </div>
@@ -1458,13 +1474,14 @@
                               >
                             </div>
                             <a
-                              class="rbt-btn-link"
-                              [routerLink]="[
-                                'store/landig-course/',
-                                COURSE.slug
-                              ]"
-                              >Learn More<i class="feather-arrow-right"></i
-                            ></a>
+                              class="rbt-btn-link left-icon"
+                              onclick="return false;"
+                              (click)="addCart(COURSE)"
+                              href="#"
+                              ><i class="feather-shopping-cart">
+                                Add To Cart</i
+                              ></a
+                            >
                           </div>
                         </div>
                       </div>
