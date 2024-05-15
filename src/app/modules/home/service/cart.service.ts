@@ -9,7 +9,7 @@ import { AuthService } from '../../auth/service/auth.service';
 })
 export class CartService {
   /**--------------------------------------------
-   * | <Tipo de dato> (valor inicial)
+   * | BehaviorSub<Tipo de dato> (valor inicial)
    * | Aqui vamos a almacenar todo lo que el
    * | usuario este registrando
    * --------------------------------------------*/
@@ -28,9 +28,7 @@ export class CartService {
      * | Traemos todo lo que este almacenado en el carrito de compra
      * ---------------------------------------------------------------*/
     let listCart = this.cart.getValue();
-    let index = listCart.findIndex(
-      (item) => item.course._id === data.course._id
-    );
+    let index = listCart.findIndex((item) => item.course === data._id);
 
     if (index === -1) {
       listCart.unshift(data);
@@ -52,9 +50,7 @@ export class CartService {
      * | luego de la eliminación
      * ------------------------------------------------------*/
     let listCart = this.cart.getValue();
-    let index = listCart.findIndex(
-      (item) => item.course._id === data.course._id
-    );
+    let index = listCart.findIndex((item) => item.course === data._id);
 
     if (index === -1) {
       listCart.splice(index, 1);
