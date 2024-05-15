@@ -32,7 +32,7 @@ export class HeaderComponent {
        * -----------------------------------------------------------------------*/
       this.sum_total = this.carts.reduce(
         (accumulator: number, currentValue: any) =>
-          accumulator + parseInt(currentValue.total),
+          accumulator + currentValue.total,
         0
       );
     });
