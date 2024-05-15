@@ -37,14 +37,16 @@ export class HeaderComponent {
       );
     });
 
-    /**--------------------------------------------------------------------
-     * | Agregamos los cursos que ya esten en la base de datos al bihevor
-     * --------------------------------------------------------------------*/
-    this.cartService.listCart().subscribe((response: any) => {
-      response.carts.forEach((cart: any) => {
-        this.cartService.addCart(cart);
+    if (this.user) {
+      /**--------------------------------------------------------------------
+       * | Agregamos los cursos que ya esten en la base de datos al bihevor
+       * --------------------------------------------------------------------*/
+      this.cartService.listCart().subscribe((response: any) => {
+        response.carts.forEach((cart: any) => {
+          this.cartService.addCart(cart);
+        });
       });
-    });
+    }
   }
 
   logout() {
