@@ -58,4 +58,10 @@ export class HeaderComponent {
   logout() {
     this.authService.logout();
   }
+
+  removeItem(cart: any) {
+    this.cartService.deleteCart(cart._id).subscribe((response: any) => {
+      this.cartService.removeItemCart(cart);
+    });
+  }
 }
