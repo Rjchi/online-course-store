@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { AuthGuard } from './modules/auth/service/auth.guard';
+
 export const routes: Routes = [
   {
     path: '',
@@ -17,6 +19,14 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./modules/tienda-guest/tienda-guest.module').then(
         (m) => m.TiendaGuestModule
+      ),
+  },
+  {
+    path: 'store-auth',
+    canActivate: [AuthGuard], // protegemos el modulo de usuarios no autenticados
+    loadChildren: () =>
+      import('./modules/tienda-auth/tienda-auth.module').then(
+        (m) => m.TiendaAuthModule
       ),
   },
   {

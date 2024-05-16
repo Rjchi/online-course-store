@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { AuthService } from 'src/app/modules/auth/service/auth.service';
 import { CartService } from 'src/app/modules/home/service/cart.service';
 
+declare function cartSidenav(): any;
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -31,7 +32,6 @@ export class HeaderComponent {
      * | Llamamos al observador
      * --------------------------*/
     this.cartService.currentData$.subscribe((response: any) => {
-      console.log('header', response);
       this.carts = response;
       /**-----------------------------------------------------------------------
        * | reduce(acumulador, iterable) => acumulador + iterable, valorInicial
@@ -53,9 +53,19 @@ export class HeaderComponent {
         });
       });
     }
+
+    setTimeout(() => {
+      cartSidenav();
+    }, 50);
   }
 
   logout() {
     this.authService.logout();
+  }
+
+  removeItem(cart: any) {
+    this.cartService.deleteCart(cart._id).subscribe((response: any) => {
+      this.cartService.removeItemCart(cart);
+    });
   }
 }

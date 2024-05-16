@@ -9,6 +9,7 @@ declare function HOMEINIT([]): any;
 declare var $: any;
 declare function magnigyPopup([]): any;
 declare function showMoreBtn([]): any;
+declare function cartSidenav(): any;
 @Component({
   selector: 'app-landing-course',
   templateUrl: './landing-course.component.html',
@@ -52,6 +53,7 @@ export class LandingCourseComponent {
         HOMEINIT($);
         magnigyPopup($);
         showMoreBtn($);
+        cartSidenav();
       }, 50);
     });
   }

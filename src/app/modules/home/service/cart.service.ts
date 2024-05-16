@@ -51,9 +51,9 @@ export class CartService {
      * | luego de la eliminación
      * ------------------------------------------------------*/
     let listCart = this.cart.getValue();
-    let index = listCart.findIndex((item) => item.course === data._id);
+    let index = listCart.findIndex((item) => item.course._id === data._id);
 
-    if (index === -1) {
+    if (index !== -1) {
       listCart.splice(index, 1);
     }
 
