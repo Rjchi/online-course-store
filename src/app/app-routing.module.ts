@@ -20,6 +20,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'store-auth',
+    loadChildren: () =>
+      import('./modules/tienda-auth/tienda-auth.module').then(
+        (m) => m.TiendaAuthModule
+      ),
+  },
+  {
     path: '',
     redirectTo: '/',
     pathMatch: 'full',
