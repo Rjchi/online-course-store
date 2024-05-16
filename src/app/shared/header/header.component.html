@@ -2950,13 +2950,13 @@
         <ng-container *ngFor="let cart of carts">
           <li class="minicart-item">
             <div class="thumbnail">
-              <a href="#" onclick="return false;" [routerLink]="['store/landig-course/', cart.course.slug]">
+              <a href="#" onclick="return false;" [routerLink]="['/store/landig-course/', cart.course.slug]">
                 <img [src]="cart.course.image" alt="Product Images" />
               </a>
             </div>
             <div class="product-content">
               <h6 class="title">
-                <a href="#" onclick="return false;" [routerLink]="['store/landig-course/', cart.course.slug]">{{ cart.course.title }}</a>
+                <a href="#" onclick="return false;" [routerLink]="['/store/landig-course/', cart.course.slug]">{{ cart.course.title }}</a>
               </h6>
 
               <span class="quantity"
@@ -2981,7 +2981,7 @@
       <hr class="mb--0" />
       <div class="rbt-minicart-bottom mt--20">
         <div class="view-cart-btn">
-          <a class="rbt-btn btn-border icon-hover w-100 text-center" href="#" onclick="return false;">
+          <a class="rbt-btn btn-border icon-hover w-100 text-center" onclick="return false;"  [routerLink]="['/store-auth/shopping-cart']">
             <span class="btn-text">View Cart</span>
             <span class="btn-icon"><i class="feather-arrow-right"></i></span>
           </a>
