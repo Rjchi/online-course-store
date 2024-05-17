@@ -1,4 +1,6 @@
+import { Toaster } from 'ngx-toast-notifications';
 import { Component } from '@angular/core';
+
 import { CartService } from '../../home/service/cart.service';
 
 @Component({
@@ -8,9 +10,10 @@ import { CartService } from '../../home/service/cart.service';
 })
 export class CartsComponent {
   carts: any = [];
+  code: any = null;
   total_sum: number = 0;
 
-  constructor(public cartService: CartService) {}
+  constructor(public cartService: CartService, public toaster: Toaster) {}
 
   ngOnInit() {
     this.cartService.currentData$.subscribe((response: any) => {
@@ -30,20 +33,61 @@ export class CartsComponent {
   }
 
   getNameCampaing(campaing_discount: number) {
-    let name = "";
+    let name = '';
 
     if (campaing_discount === 1) {
-      name = "CAMPAÑA DE DESCUENTO NORMAL";
+      name = 'CAMPAÑA DE DESCUENTO NORMAL';
     }
 
     if (campaing_discount === 2) {
-      name = "CAMPAÑA DE DESCUENTO FLASH";
+      name = 'CAMPAÑA DE DESCUENTO FLASH';
     }
 
     if (campaing_discount === 3) {
-      name = "CAMPAÑA DE DESCUENTO BANNER";
+      name = 'CAMPAÑA DE DESCUENTO BANNER';
     }
 
     return name;
+  }
+
+  applyCupon() {
+    if (!this.code) {
+      this.toaster.open({
+        text: 'DEBES INGRESAR UN CODIGO DE CUPÓN',
+        caption: 'VALIDATIONS',
+        type: 'danger',
+      });
+
+      return;
+    }
+
+    let data = {
+      cupon: this.code,
+    };
+
+    this.cartService.applyCupon(data).subscribe((response: any) => {
+      console.log(response);
+      if (response.message === 403) {
+        this.toaster.open({
+          text: response.message_text,
+          caption: 'VALIDATIONS',
+          type: 'danger',
+        });
+      } else {
+        this.cartService.resetData();
+
+        setTimeout(() => {
+          response.carts.forEach((cart: any) => {
+            this.cartService.addCart(cart);
+          });
+        }, 50);
+
+        this.toaster.open({
+          text: response.message_text,
+          caption: 'VALIDATIONS',
+          type: 'success',
+        });
+      }
+    });
   }
 }
