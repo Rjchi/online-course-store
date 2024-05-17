@@ -90,7 +90,7 @@
           <div class="row g-5">
             <div class="col-lg-6 col-12">
               <!-- Calculate Shipping -->
-              <div class="calculate-shipping edu-bg-shade">
+              <!-- <div class="calculate-shipping edu-bg-shade">
                 <div class="section-title text-start">
                   <h4 class="title mb--30">Calculate Shipping</h4>
                 </div>
@@ -139,7 +139,7 @@
                     </div>
                   </div>
                 </form>
-              </div>
+              </div> -->
 
               <!-- Discount Coupon -->
               <div class="discount-coupon edu-bg-shade">
@@ -149,11 +149,12 @@
                 <form action="#">
                   <div class="row">
                     <div class="col-md-6 col-12 mb--25">
-                      <input type="text" placeholder="Coupon Code" />
+                      <input type="text" [(ngModel)]="code" name="code" placeholder="Coupon Code" />
                     </div>
                     <div class="col-md-6 col-12 mb--25">
                       <button
                         class="rbt-btn btn-gradient hover-icon-reverse btn-sm"
+                        (click)="applyCupon()"
                       >
                         <span class="icon-reverse-wrapper">
                           <span class="btn-text">Apply Code</span>
