@@ -36,7 +36,7 @@ export class CartsComponent {
         // optional styling for buttons
         // https://developer.paypal.com/docs/checkout/standard/customize/buttons-style-guide/
         style: {
-          color: 'gold',
+          color: 'white',
           shape: 'rect',
           layout: 'vertical',
         },
