@@ -2,6 +2,7 @@ import { Toaster } from 'ngx-toast-notifications';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 
 import { CartService } from '../../home/service/cart.service';
+import { TiendaAuthService } from '../service/tienda-auth.service';
 
 declare var paypal: any;
 @Component({
@@ -19,7 +20,11 @@ export class CartsComponent {
    * | #paypal
    * ------------------------------------------------------------*/
   @ViewChild('paypal', { static: true }) paypalElement?: ElementRef;
-  constructor(public cartService: CartService, public toaster: Toaster) {}
+  constructor(
+    public cartService: CartService,
+    public toaster: Toaster,
+    public tiendaAuthService: TiendaAuthService
+  ) {}
 
   ngOnInit() {
     this.cartService.currentData$.subscribe((response: any) => {
@@ -33,25 +38,44 @@ export class CartsComponent {
 
     paypal
       .Buttons({
-        // optional styling for buttons
-        // https://developer.paypal.com/docs/checkout/standard/customize/buttons-style-guide/
+        /**---------------------
+         * | Estilos del botón
+         * ---------------------*/
         style: {
           color: 'white',
           shape: 'rect',
           layout: 'vertical',
         },
 
-        // set up the transaction
         createOrder: (data: any, actions: any) => {
-          // pass in any options from the v2 orders create call:
           // https://developer.paypal.com/api/orders/v2/#orders-create-request-body
+
+          if (this.total_sum === 0) {
+            this.toaster.open({
+              text: 'PARA PROCESAR EL PAGO EL MONTO TIENE QUE SER MAYOR A CERO',
+              caption: 'VALIDATIONS',
+              type: 'danger',
+            });
+
+            return false; // con esto cerramos la ventana emergente de paypal
+          }
+
+          if (this.carts.length === 0) {
+            this.toaster.open({
+              text: 'PARA PROCESAR EL PAGO EL CARRITO TIENE QUE TENER ALMENOS UN ITEM',
+              caption: 'VALIDATIONS',
+              type: 'danger',
+            });
+
+            return false;
+          }
 
           const createOrderPayload = {
             purchase_units: [
               {
                 amount: {
-                  description: 'COMPRAR POR EL ECOMMERCE',
-                  value: this.total_sum, // Valor total
+                  description: 'COMPRAR POR EL LMS',
+                  value: this.total_sum, // Valor total de los cursos
                 },
               },
             ],
@@ -60,10 +84,23 @@ export class CartsComponent {
           return actions.order.create(createOrderPayload);
         },
 
-        // finalize the transaction
+        /**----------------------------------
+         * | Cuando finalice la transacción
+         * ----------------------------------*/
         onApprove: async (data: any, actions: any) => {
           let Order = await actions.order.capture();
-          // Order.purchase_units[0].payments.captures[0].id
+
+          let dataOrder = {
+            total: this.total_sum,
+            method_payment: 'PAYPAL',
+            currency_total: 'USD', // Moneda con la que trabaja paypal
+            currency_payment: 'USD', // Moneda local
+            n_transaction: Order.purchase_units[0].payments.captures[0].id,
+          };
+
+          this.tiendaAuthService.registerOrder(dataOrder).subscribe((response: any) => {
+            console.log(response);
+          });
 
           // return actions.order.capture().then(captureOrderHandler);
         },
