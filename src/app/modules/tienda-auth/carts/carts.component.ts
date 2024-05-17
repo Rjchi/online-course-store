@@ -28,4 +28,22 @@ export class CartsComponent {
       this.cartService.removeItemCart(cart);
     });
   }
+
+  getNameCampaing(campaing_discount: number) {
+    let name = "";
+
+    if (campaing_discount === 1) {
+      name = "CAMPAÑA DE DESCUENTO NORMAL";
+    }
+
+    if (campaing_discount === 2) {
+      name = "CAMPAÑA DE DESCUENTO FLASH";
+    }
+
+    if (campaing_discount === 3) {
+      name = "CAMPAÑA DE DESCUENTO BANNER";
+    }
+
+    return name;
+  }
 }

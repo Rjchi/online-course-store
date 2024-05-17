@@ -37,7 +37,7 @@
                     <th class="pro-thumbnail">Image</th>
                     <th class="pro-title">Course</th>
                     <th class="pro-price">Price</th>
-                    <!-- <th class="pro-quantity">Quantity</th> -->
+                    <th class="pro-quantity"></th>
                     <th class="pro-subtotal">Total</th>
                     <th class="pro-remove">Remove</th>
                   </tr>
@@ -52,9 +52,30 @@
                     </td>
                     <td class="pro-title"><a href="#" onclick="return false;" [routerLink]="['/store/landig-course/', cart.course.slug]">{{ cart.course.title }}</a></td>
                     <td class="pro-price"><span>${{ cart.price_unit }}</span></td>
-                    <!-- <td class="pro-quantity">
-                      <div class="pro-qty"><input type="text" value="1" /></div>
-                    </td> -->
+                    <td class="pro-quantity">
+                      <ng-container *ngIf="cart.code_cupon">
+                        <small *ngIf="cart.type_discount === 1">
+                          Discount : -{{ cart.discount }}%
+                        </small>
+                        <small *ngIf="cart.type_discount === 2">
+                          Discount : -{{ cart.discount }}USD
+                        </small>
+                        <br />
+                        <small>Cupon: {{ cart.code_cupon }}</small>
+                      </ng-container>
+                      <ng-container *ngIf="cart.code_discount">
+                        <small *ngIf="cart.type_discount === 1">
+                          Discount : -{{ cart.discount }}%
+                        </small>
+                        <small *ngIf="cart.type_discount === 2">
+                          Discount : -{{ cart.discount }}USD
+                        </small>
+                        <br />
+                        <small>Code Discount: {{ cart.code_discount }}</small>
+                        <br />
+                        <small>Type Campaing: {{ getNameCampaing(cart.campaing_discount) }}</small>
+                      </ng-container>
+                    </td>
                     <td class="pro-subtotal"><span>${{ cart.total }}</span></td>
                     <td class="pro-remove">
                       <a href="#" onclick="return false;" (click)="removeItem(cart.course)"><i class="feather-x"></i></a>
