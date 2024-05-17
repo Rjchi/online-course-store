@@ -51,7 +51,7 @@ export class CartsComponent {
               {
                 amount: {
                   description: 'COMPRAR POR EL ECOMMERCE',
-                  value: 50,
+                  value: this.total_sum, // Valor total
                 },
               },
             ],
