@@ -80,6 +80,8 @@ export class CartsComponent {
           response.carts.forEach((cart: any) => {
             this.cartService.addCart(cart);
           });
+
+          this.code = null;
         }, 50);
 
         this.toaster.open({
