@@ -179,7 +179,9 @@
                         </div>
                         <div class="content">
                           <h3 class="counter without-icon color-primary">
-                            <span class="odometer" data-count="30">{{ enrolled_course_count }}</span>
+                            <span class="odometer" data-count="30">{{
+                              enrolled_course_count
+                            }}</span>
                           </h3>
                           <span class="rbt-title-style-2 d-block"
                             >Enrolled Courses</span
@@ -201,7 +203,9 @@
                         </div>
                         <div class="content">
                           <h3 class="counter without-icon color-secondary">
-                            <span class="odometer" data-count="10">{{ actived_course_count }}</span>
+                            <span class="odometer" data-count="10">{{
+                              actived_course_count
+                            }}</span>
                           </h3>
                           <span class="rbt-title-style-2 d-block"
                             >ACTIVE COURSES</span
@@ -223,7 +227,9 @@
                         </div>
                         <div class="content">
                           <h3 class="counter without-icon color-violet">
-                            <span class="odometer" data-count="7">{{ termined_course_count }}</span>
+                            <span class="odometer" data-count="7">{{
+                              termined_course_count
+                            }}</span>
                           </h3>
                           <span class="rbt-title-style-2 d-block"
                             >Completed Courses</span
@@ -277,7 +283,9 @@
                     <div class="rbt-profile-content b2">Last Name</div>
                   </div>
                   <div class="col-lg-8 col-md-8">
-                    <div class="rbt-profile-content b2">{{ profile.surname }}</div>
+                    <div class="rbt-profile-content b2">
+                      {{ profile.surname }}
+                    </div>
                   </div>
                 </div>
                 <!-- End Profile Row  -->
@@ -288,7 +296,9 @@
                     <div class="rbt-profile-content b2">Username</div>
                   </div>
                   <div class="col-lg-8 col-md-8">
-                    <div class="rbt-profile-content b2">{{ profile.profession }}</div>
+                    <div class="rbt-profile-content b2">
+                      {{ profile.profession }}
+                    </div>
                   </div>
                 </div>
                 <!-- End Profile Row  -->
@@ -299,7 +309,9 @@
                     <div class="rbt-profile-content b2">Email</div>
                   </div>
                   <div class="col-lg-8 col-md-8">
-                    <div class="rbt-profile-content b2">{{ profile.email }}</div>
+                    <div class="rbt-profile-content b2">
+                      {{ profile.email }}
+                    </div>
                   </div>
                 </div>
                 <!-- End Profile Row  -->
@@ -310,7 +322,9 @@
                     <div class="rbt-profile-content b2">Phone Number</div>
                   </div>
                   <div class="col-lg-8 col-md-8">
-                    <div class="rbt-profile-content b2">{{ profile.phone }}</div>
+                    <div class="rbt-profile-content b2">
+                      {{ profile.phone }}
+                    </div>
                   </div>
                 </div>
                 <!-- End Profile Row  -->
@@ -413,236 +427,98 @@
                     aria-labelledby="home-tab-4"
                   >
                     <div class="row g-5">
-                      <!-- Start Single Course  -->
-                      <div class="col-lg-4 col-md-6 col-12">
-                        <div class="rbt-card variation-01 rbt-hover">
-                          <div class="rbt-card-img">
-                            <a href="course-details.html">
-                              <img
-                                src="assets/images/course/course-online-01.jpg"
-                                alt="Card image"
-                              />
-                            </a>
-                          </div>
-                          <div class="rbt-card-body">
-                            <div class="rbt-card-top">
-                              <div class="rbt-review">
-                                <div class="rating">
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                </div>
-                                <span class="rating-count"> (15 Reviews)</span>
-                              </div>
-                              <div class="rbt-bookmark-btn">
-                                <a
-                                  class="rbt-round-btn"
-                                  title="Bookmark"
-                                  href="#"
-                                  ><i class="feather-bookmark"></i
-                                ></a>
-                              </div>
+                      <ng-container
+                        *ngFor="let e_course of enrolled_course_news"
+                      >
+                        <!-- Start Single Course  -->
+                        <div class="col-lg-4 col-md-6 col-12">
+                          <div class="rbt-card variation-01 rbt-hover">
+                            <div class="rbt-card-img">
+                              <a href="#" onclick="return false;">
+                                <img
+                                  [src]="e_course.course.image"
+                                  alt="Card image"
+                                />
+                              </a>
                             </div>
-                            <h4 class="rbt-card-title">
-                              <a href="course-details.html"
-                                >React Front To Back</a
-                              >
-                            </h4>
-                            <ul class="rbt-meta">
-                              <li><i class="feather-book"></i>20 Lessons</li>
-                              <li><i class="feather-users"></i>40 Students</li>
-                            </ul>
-
-                            <div class="rbt-progress-style-1 mb--20 mt--10">
-                              <div class="single-progress">
-                                <h6 class="rbt-title-style-2 mb--10">
-                                  Complete
-                                </h6>
-                                <div class="progress">
-                                  <div
-                                    class="progress-bar wow fadeInLeft bar-color-success"
-                                    data-wow-duration="0.5s"
-                                    data-wow-delay=".3s"
-                                    role="progressbar"
-                                    style="width: 90%"
-                                    aria-valuenow="90"
-                                    aria-valuemin="0"
-                                    aria-valuemax="100"
-                                  ></div>
-                                  <span
-                                    class="rbt-title-style-2 progress-number"
-                                    >90%</span
+                            <div class="rbt-card-body">
+                              <div class="rbt-card-top">
+                                <div class="rbt-review">
+                                  <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                  </div>
+                                  <span class="rating-count">
+                                    (15 Reviews)</span
                                   >
                                 </div>
+                                <div class="rbt-bookmark-btn">
+                                  <a
+                                    class="rbt-round-btn"
+                                    title="Bookmark"
+                                    href="#"
+                                    ><i class="feather-bookmark"></i
+                                  ></a>
+                                </div>
                               </div>
-                            </div>
-                            <div class="rbt-card-bottom">
-                              <a
-                                class="rbt-btn btn-sm bg-primary-opacity w-100 text-center"
-                                href="#"
-                                >Download Certificate</a
-                              >
+                              <h4 class="rbt-card-title">
+                                <a href="#" onclick="return false;">{{
+                                  e_course.course.title
+                                }}</a>
+                              </h4>
+                              <ul class="rbt-meta">
+                                <li>
+                                  <i class="feather-book"></i
+                                  >{{ e_course.course.n_clases }} Lessons
+                                </li>
+                                <li>
+                                  <i class="feather-users"></i>40 Students
+                                </li>
+                              </ul>
+
+                              <div class="rbt-progress-style-1 mb--20 mt--10">
+                                <div class="single-progress">
+                                  <h6 class="rbt-title-style-2 mb--10">
+                                    Complete
+                                  </h6>
+                                  <div class="progress">
+                                    <div
+                                      class="progress-bar wow fadeInLeft bar-color-success"
+                                      data-wow-duration="0.5s"
+                                      data-wow-delay=".3s"
+                                      role="progressbar"
+                                      [ngStyle]="{
+                                        width: e_course.percentage + '%'
+                                      }"
+                                      [attr.aria-valuenow]="e_course.percentage"
+                                      aria-valuemin="0"
+                                      aria-valuemax="100"
+                                    ></div>
+                                    <span
+                                      class="rbt-title-style-2 progress-number"
+                                      >{{ e_course.percentage }}%</span
+                                    >
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="rbt-card-bottom">
+                                <a
+                                  class="rbt-btn btn-sm bg-primary-opacity w-100 text-center"
+                                  [routerLink]="[
+                                    '/store/landig-course/',
+                                    e_course.course.slug
+                                  ]"
+                                  >Go to the Course</a
+                                >
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <!-- End Single Course  -->
-
-                      <!-- Start Single Course  -->
-                      <div class="col-lg-4 col-md-6 col-12">
-                        <div class="rbt-card variation-01 rbt-hover">
-                          <div class="rbt-card-img">
-                            <a href="course-details.html">
-                              <img
-                                src="assets/images/course/course-online-02.jpg"
-                                alt="Card image"
-                              />
-                            </a>
-                          </div>
-                          <div class="rbt-card-body">
-                            <div class="rbt-card-top">
-                              <div class="rbt-review">
-                                <div class="rating">
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                </div>
-                                <span class="rating-count"> (15 Reviews)</span>
-                              </div>
-                              <div class="rbt-bookmark-btn">
-                                <a
-                                  class="rbt-round-btn"
-                                  title="Bookmark"
-                                  href="#"
-                                  ><i class="feather-bookmark"></i
-                                ></a>
-                              </div>
-                            </div>
-                            <h4 class="rbt-card-title">
-                              <a href="course-details.html"
-                                >PHP Beginner + Advanced</a
-                              >
-                            </h4>
-                            <ul class="rbt-meta">
-                              <li><i class="feather-book"></i>10 Lessons</li>
-                              <li><i class="feather-users"></i>30 Students</li>
-                            </ul>
-
-                            <div class="rbt-progress-style-1 mb--20 mt--10">
-                              <div class="single-progress">
-                                <h6 class="rbt-title-style-2 mb--10">
-                                  Complete
-                                </h6>
-                                <div class="progress">
-                                  <div
-                                    class="progress-bar wow fadeInLeft bar-color-success"
-                                    data-wow-duration="0.5s"
-                                    data-wow-delay=".3s"
-                                    role="progressbar"
-                                    style="width: 40%"
-                                    aria-valuenow="40"
-                                    aria-valuemin="0"
-                                    aria-valuemax="100"
-                                  ></div>
-                                  <span
-                                    class="rbt-title-style-2 progress-number"
-                                    >40%</span
-                                  >
-                                </div>
-                              </div>
-                            </div>
-                            <div class="rbt-card-bottom">
-                              <a
-                                class="rbt-btn btn-sm bg-primary-opacity w-100 text-center"
-                                href="#"
-                                >Download Certificate</a
-                              >
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- End Single Course  -->
-
-                      <!-- Start Single Course  -->
-                      <div class="col-lg-4 col-md-6 col-12">
-                        <div class="rbt-card variation-01 rbt-hover">
-                          <div class="rbt-card-img">
-                            <a href="course-details.html">
-                              <img
-                                src="assets/images/course/course-online-03.jpg"
-                                alt="Card image"
-                              />
-                            </a>
-                          </div>
-                          <div class="rbt-card-body">
-                            <div class="rbt-card-top">
-                              <div class="rbt-review">
-                                <div class="rating">
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                </div>
-                                <span class="rating-count"> (4 Reviews)</span>
-                              </div>
-                              <div class="rbt-bookmark-btn">
-                                <a
-                                  class="rbt-round-btn"
-                                  title="Bookmark"
-                                  href="#"
-                                  ><i class="feather-bookmark"></i
-                                ></a>
-                              </div>
-                            </div>
-                            <h4 class="rbt-card-title">
-                              <a href="course-details.html"
-                                >Angular Zero to Mastery</a
-                              >
-                            </h4>
-                            <ul class="rbt-meta">
-                              <li><i class="feather-book"></i>14 Lessons</li>
-                              <li><i class="feather-users"></i>26 Students</li>
-                            </ul>
-
-                            <div class="rbt-progress-style-1 mb--20 mt--10">
-                              <div class="single-progress">
-                                <h6 class="rbt-title-style-2 mb--10">
-                                  Complete
-                                </h6>
-                                <div class="progress">
-                                  <div
-                                    class="progress-bar wow fadeInLeft bar-color-success"
-                                    data-wow-duration="0.5s"
-                                    data-wow-delay=".3s"
-                                    role="progressbar"
-                                    style="width: 65%"
-                                    aria-valuenow="65"
-                                    aria-valuemin="0"
-                                    aria-valuemax="100"
-                                  ></div>
-                                  <span
-                                    class="rbt-title-style-2 progress-number"
-                                    >65%</span
-                                  >
-                                </div>
-                              </div>
-                            </div>
-                            <div class="rbt-card-bottom">
-                              <a
-                                class="rbt-btn btn-sm bg-primary-opacity w-100 text-center"
-                                href="#"
-                                >Download Certificate</a
-                              >
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- End Single Course  -->
+                        <!-- End Single Course  -->
+                      </ng-container>
                     </div>
                   </div>
 
@@ -653,171 +529,98 @@
                     aria-labelledby="profile-tab-4"
                   >
                     <div class="row g-5">
-                      <!-- Start Single Course  -->
-                      <div class="col-lg-4 col-md-6 col-12">
-                        <div class="rbt-card variation-01 rbt-hover">
-                          <div class="rbt-card-img">
-                            <a href="course-details.html">
-                              <img
-                                src="assets/images/course/course-online-04.jpg"
-                                alt="Card image"
-                              />
-                            </a>
-                          </div>
-                          <div class="rbt-card-body">
-                            <div class="rbt-card-top">
-                              <div class="rbt-review">
-                                <div class="rating">
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                </div>
-                                <span class="rating-count"> (3 Reviews)</span>
-                              </div>
-                              <div class="rbt-bookmark-btn">
-                                <a
-                                  class="rbt-round-btn"
-                                  title="Bookmark"
-                                  href="#"
-                                  ><i class="feather-bookmark"></i
-                                ></a>
-                              </div>
+                      <ng-container
+                        *ngFor="let a_course of actived_course_news"
+                      >
+                        <!-- Start Single Course  -->
+                        <div class="col-lg-4 col-md-6 col-12">
+                          <div class="rbt-card variation-01 rbt-hover">
+                            <div class="rbt-card-img">
+                              <a href="#" onclick="return false;">
+                                <img
+                                  [src]="a_course.course.image"
+                                  alt="Card image"
+                                />
+                              </a>
                             </div>
-                            <h4 class="rbt-card-title">
-                              <a href="course-details.html"
-                                >English Langiage Club</a
-                              >
-                            </h4>
-                            <ul class="rbt-meta">
-                              <li><i class="feather-book"></i>20 Lessons</li>
-                              <li><i class="feather-users"></i>30 Students</li>
-                            </ul>
-
-                            <div class="rbt-card-bottom">
-                              <div class="rbt-price">
-                                <span class="current-price">$40</span>
-                                <span class="off-price">$86</span>
+                            <div class="rbt-card-body">
+                              <div class="rbt-card-top">
+                                <div class="rbt-review">
+                                  <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                  </div>
+                                  <span class="rating-count">
+                                    (15 Reviews)</span
+                                  >
+                                </div>
+                                <div class="rbt-bookmark-btn">
+                                  <a
+                                    class="rbt-round-btn"
+                                    title="Bookmark"
+                                    href="#"
+                                    ><i class="feather-bookmark"></i
+                                  ></a>
+                                </div>
                               </div>
-                              <a class="rbt-btn-link" href="course-details.html"
-                                >Learn More<i class="feather-arrow-right"></i
-                              ></a>
+                              <h4 class="rbt-card-title">
+                                <a href="#" onclick="return false;">{{
+                                  a_course.course.title
+                                }}</a>
+                              </h4>
+                              <ul class="rbt-meta">
+                                <li>
+                                  <i class="feather-book"></i
+                                  >{{ a_course.course.n_clases }} Lessons
+                                </li>
+                                <li>
+                                  <i class="feather-users"></i>40 Students
+                                </li>
+                              </ul>
+
+                              <div class="rbt-progress-style-1 mb--20 mt--10">
+                                <div class="single-progress">
+                                  <h6 class="rbt-title-style-2 mb--10">
+                                    Complete
+                                  </h6>
+                                  <div class="progress">
+                                    <div
+                                      class="progress-bar wow fadeInLeft bar-color-success"
+                                      data-wow-duration="0.5s"
+                                      data-wow-delay=".3s"
+                                      role="progressbar"
+                                      [ngStyle]="{
+                                        width: a_course.percentage + '%'
+                                      }"
+                                      [attr.aria-valuenow]="a_course.percentage"
+                                      aria-valuemin="0"
+                                      aria-valuemax="100"
+                                    ></div>
+                                    <span
+                                      class="rbt-title-style-2 progress-number"
+                                      >{{ a_course.percentage }}%</span
+                                    >
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="rbt-card-bottom">
+                                <a
+                                  class="rbt-btn btn-sm bg-primary-opacity w-100 text-center"
+                                  [routerLink]="[
+                                    '/store/landig-course/',
+                                    a_course.course.slug
+                                  ]"
+                                  >Go to the Course</a
+                                >
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <!-- End Single Course  -->
-
-                      <!-- Start Single Course  -->
-                      <div class="col-lg-4 col-md-6 col-12">
-                        <div class="rbt-card variation-01 rbt-hover">
-                          <div class="rbt-card-img">
-                            <a href="course-details.html">
-                              <img
-                                src="assets/images/course/course-online-06.jpg"
-                                alt="Card image"
-                              />
-                            </a>
-                          </div>
-                          <div class="rbt-card-body">
-                            <div class="rbt-card-top">
-                              <div class="rbt-review">
-                                <div class="rating">
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                </div>
-                                <span class="rating-count"> (3 Reviews)</span>
-                              </div>
-                              <div class="rbt-bookmark-btn">
-                                <a
-                                  class="rbt-round-btn"
-                                  title="Bookmark"
-                                  href="#"
-                                  ><i class="feather-bookmark"></i
-                                ></a>
-                              </div>
-                            </div>
-                            <h4 class="rbt-card-title">
-                              <a href="course-details.html"
-                                >Graphic Courses Club</a
-                              >
-                            </h4>
-                            <ul class="rbt-meta">
-                              <li><i class="feather-book"></i>50 Lessons</li>
-                              <li><i class="feather-users"></i>10 Students</li>
-                            </ul>
-
-                            <div class="rbt-card-bottom">
-                              <div class="rbt-price">
-                                <span class="current-price">$40</span>
-                                <span class="off-price">$86</span>
-                              </div>
-                              <a class="rbt-btn-link" href="course-details.html"
-                                >Learn More<i class="feather-arrow-right"></i
-                              ></a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- End Single Course  -->
-
-                      <!-- Start Single Course  -->
-                      <div class="col-lg-4 col-md-6 col-12">
-                        <div class="rbt-card variation-01 rbt-hover">
-                          <div class="rbt-card-img">
-                            <a href="course-details.html">
-                              <img
-                                src="assets/images/course/course-online-05.jpg"
-                                alt="Card image"
-                              />
-                            </a>
-                          </div>
-                          <div class="rbt-card-body">
-                            <div class="rbt-card-top">
-                              <div class="rbt-review">
-                                <div class="rating">
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                </div>
-                                <span class="rating-count"> (3 Reviews)</span>
-                              </div>
-                              <div class="rbt-bookmark-btn">
-                                <a
-                                  class="rbt-round-btn"
-                                  title="Bookmark"
-                                  href="#"
-                                  ><i class="feather-bookmark"></i
-                                ></a>
-                              </div>
-                            </div>
-                            <h4 class="rbt-card-title">
-                              <a href="course-details.html">Wed Design Club</a>
-                            </h4>
-                            <ul class="rbt-meta">
-                              <li><i class="feather-book"></i>20 Lessons</li>
-                              <li><i class="feather-users"></i>30 Students</li>
-                            </ul>
-
-                            <div class="rbt-card-bottom">
-                              <div class="rbt-price">
-                                <span class="current-price">$40</span>
-                                <span class="off-price">$86</span>
-                              </div>
-                              <a class="rbt-btn-link" href="course-details.html"
-                                >Learn More<i class="feather-arrow-right"></i
-                              ></a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- End Single Course  -->
+                        <!-- End Single Course  -->
+                      </ng-container>
                     </div>
                   </div>
 
@@ -828,236 +631,98 @@
                     aria-labelledby="contact-tab-4"
                   >
                     <div class="row g-5">
-                      <!-- Start Single Course  -->
-                      <div class="col-lg-4 col-md-6 col-12">
-                        <div class="rbt-card variation-01 rbt-hover">
-                          <div class="rbt-card-img">
-                            <a href="course-details.html">
-                              <img
-                                src="assets/images/course/course-online-01.jpg"
-                                alt="Card image"
-                              />
-                            </a>
-                          </div>
-                          <div class="rbt-card-body">
-                            <div class="rbt-card-top">
-                              <div class="rbt-review">
-                                <div class="rating">
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                </div>
-                                <span class="rating-count"> (15 Reviews)</span>
-                              </div>
-                              <div class="rbt-bookmark-btn">
-                                <a
-                                  class="rbt-round-btn"
-                                  title="Bookmark"
-                                  href="#"
-                                  ><i class="feather-bookmark"></i
-                                ></a>
-                              </div>
+                      <ng-container
+                        *ngFor="let t_course of termined_course_news"
+                      >
+                        <!-- Start Single Course  -->
+                        <div class="col-lg-4 col-md-6 col-12">
+                          <div class="rbt-card variation-01 rbt-hover">
+                            <div class="rbt-card-img">
+                              <a href="#" onclick="return false;">
+                                <img
+                                  [src]="t_course.course.image"
+                                  alt="Card image"
+                                />
+                              </a>
                             </div>
-                            <h4 class="rbt-card-title">
-                              <a href="course-details.html"
-                                >React Front To Back</a
-                              >
-                            </h4>
-                            <ul class="rbt-meta">
-                              <li><i class="feather-book"></i>20 Lessons</li>
-                              <li><i class="feather-users"></i>40 Students</li>
-                            </ul>
-
-                            <div class="rbt-progress-style-1 mb--20 mt--10">
-                              <div class="single-progress">
-                                <h6 class="rbt-title-style-2 mb--10">
-                                  Complete
-                                </h6>
-                                <div class="progress">
-                                  <div
-                                    class="progress-bar wow fadeInLeft bar-color-success"
-                                    data-wow-duration="0.5s"
-                                    data-wow-delay=".3s"
-                                    role="progressbar"
-                                    style="width: 100%"
-                                    aria-valuenow="100"
-                                    aria-valuemin="0"
-                                    aria-valuemax="100"
-                                  ></div>
-                                  <span
-                                    class="rbt-title-style-2 progress-number"
-                                    >100%</span
+                            <div class="rbt-card-body">
+                              <div class="rbt-card-top">
+                                <div class="rbt-review">
+                                  <div class="rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                  </div>
+                                  <span class="rating-count">
+                                    (15 Reviews)</span
                                   >
                                 </div>
+                                <div class="rbt-bookmark-btn">
+                                  <a
+                                    class="rbt-round-btn"
+                                    title="Bookmark"
+                                    href="#"
+                                    ><i class="feather-bookmark"></i
+                                  ></a>
+                                </div>
                               </div>
-                            </div>
-                            <div class="rbt-card-bottom">
-                              <a
-                                class="rbt-btn btn-sm bg-primary-opacity w-100 text-center"
-                                href="#"
-                                >Download Certificate</a
-                              >
+                              <h4 class="rbt-card-title">
+                                <a href="#" onclick="return false;">{{
+                                  t_course.course.title
+                                }}</a>
+                              </h4>
+                              <ul class="rbt-meta">
+                                <li>
+                                  <i class="feather-book"></i
+                                  >{{ t_course.course.n_clases }} Lessons
+                                </li>
+                                <li>
+                                  <i class="feather-users"></i>40 Students
+                                </li>
+                              </ul>
+
+                              <div class="rbt-progress-style-1 mb--20 mt--10">
+                                <div class="single-progress">
+                                  <h6 class="rbt-title-style-2 mb--10">
+                                    Complete
+                                  </h6>
+                                  <div class="progress">
+                                    <div
+                                      class="progress-bar wow fadeInLeft bar-color-success"
+                                      data-wow-duration="0.5s"
+                                      data-wow-delay=".3s"
+                                      role="progressbar"
+                                      [ngStyle]="{
+                                        width: t_course.percentage + '%'
+                                      }"
+                                      [attr.aria-valuenow]="t_course.percentage"
+                                      aria-valuemin="0"
+                                      aria-valuemax="100"
+                                    ></div>
+                                    <span
+                                      class="rbt-title-style-2 progress-number"
+                                      >{{ t_course.percentage }}%</span
+                                    >
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="rbt-card-bottom">
+                                <a
+                                  class="rbt-btn btn-sm bg-primary-opacity w-100 text-center"
+                                  [routerLink]="[
+                                    '/store/landig-course/',
+                                    t_course.course.slug
+                                  ]"
+                                  >Go to the Course</a
+                                >
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <!-- End Single Course  -->
-
-                      <!-- Start Single Course  -->
-                      <div class="col-lg-4 col-md-6 col-12">
-                        <div class="rbt-card variation-01 rbt-hover">
-                          <div class="rbt-card-img">
-                            <a href="course-details.html">
-                              <img
-                                src="assets/images/course/course-online-02.jpg"
-                                alt="Card image"
-                              />
-                            </a>
-                          </div>
-                          <div class="rbt-card-body">
-                            <div class="rbt-card-top">
-                              <div class="rbt-review">
-                                <div class="rating">
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                </div>
-                                <span class="rating-count"> (15 Reviews)</span>
-                              </div>
-                              <div class="rbt-bookmark-btn">
-                                <a
-                                  class="rbt-round-btn"
-                                  title="Bookmark"
-                                  href="#"
-                                  ><i class="feather-bookmark"></i
-                                ></a>
-                              </div>
-                            </div>
-                            <h4 class="rbt-card-title">
-                              <a href="course-details.html"
-                                >PHP Beginner + Advanced</a
-                              >
-                            </h4>
-                            <ul class="rbt-meta">
-                              <li><i class="feather-book"></i>10 Lessons</li>
-                              <li><i class="feather-users"></i>30 Students</li>
-                            </ul>
-
-                            <div class="rbt-progress-style-1 mb--20 mt--10">
-                              <div class="single-progress">
-                                <h6 class="rbt-title-style-2 mb--10">
-                                  Complete
-                                </h6>
-                                <div class="progress">
-                                  <div
-                                    class="progress-bar wow fadeInLeft bar-color-success"
-                                    data-wow-duration="0.5s"
-                                    data-wow-delay=".3s"
-                                    role="progressbar"
-                                    style="width: 100%"
-                                    aria-valuenow="100"
-                                    aria-valuemin="0"
-                                    aria-valuemax="100"
-                                  ></div>
-                                  <span
-                                    class="rbt-title-style-2 progress-number"
-                                    >100%</span
-                                  >
-                                </div>
-                              </div>
-                            </div>
-                            <div class="rbt-card-bottom">
-                              <a
-                                class="rbt-btn btn-sm bg-primary-opacity w-100 text-center"
-                                href="#"
-                                >Download Certificate</a
-                              >
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- End Single Course  -->
-
-                      <!-- Start Single Course  -->
-                      <div class="col-lg-4 col-md-6 col-12">
-                        <div class="rbt-card variation-01 rbt-hover">
-                          <div class="rbt-card-img">
-                            <a href="course-details.html">
-                              <img
-                                src="assets/images/course/course-online-03.jpg"
-                                alt="Card image"
-                              />
-                            </a>
-                          </div>
-                          <div class="rbt-card-body">
-                            <div class="rbt-card-top">
-                              <div class="rbt-review">
-                                <div class="rating">
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                  <i class="fas fa-star"></i>
-                                </div>
-                                <span class="rating-count"> (4 Reviews)</span>
-                              </div>
-                              <div class="rbt-bookmark-btn">
-                                <a
-                                  class="rbt-round-btn"
-                                  title="Bookmark"
-                                  href="#"
-                                  ><i class="feather-bookmark"></i
-                                ></a>
-                              </div>
-                            </div>
-                            <h4 class="rbt-card-title">
-                              <a href="course-details.html"
-                                >Angular Zero to Mastery</a
-                              >
-                            </h4>
-                            <ul class="rbt-meta">
-                              <li><i class="feather-book"></i>14 Lessons</li>
-                              <li><i class="feather-users"></i>26 Students</li>
-                            </ul>
-
-                            <div class="rbt-progress-style-1 mb--20 mt--10">
-                              <div class="single-progress">
-                                <h6 class="rbt-title-style-2 mb--10">
-                                  Complete
-                                </h6>
-                                <div class="progress">
-                                  <div
-                                    class="progress-bar wow fadeInLeft bar-color-success"
-                                    data-wow-duration="0.5s"
-                                    data-wow-delay=".3s"
-                                    role="progressbar"
-                                    style="width: 100%"
-                                    aria-valuenow="100"
-                                    aria-valuemin="0"
-                                    aria-valuemax="100"
-                                  ></div>
-                                  <span
-                                    class="rbt-title-style-2 progress-number"
-                                    >100%</span
-                                  >
-                                </div>
-                              </div>
-                            </div>
-                            <div class="rbt-card-bottom">
-                              <a
-                                class="rbt-btn btn-sm bg-primary-opacity w-100 text-center"
-                                href="#"
-                                >Download Certificate</a
-                              >
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <!-- End Single Course  -->
+                        <!-- End Single Course  -->
+                      </ng-container>
                     </div>
                   </div>
                 </div>
