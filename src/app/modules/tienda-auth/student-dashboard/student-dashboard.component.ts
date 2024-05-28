@@ -14,6 +14,8 @@ export class StudentDashboardComponent {
   enrolled_course_count: number = 0;
   termined_course_count: number = 0;
 
+  profile: any = null;
+
   constructor(public tiendaAuthService: TiendaAuthService) {}
 
   ngOnInit(): void {
@@ -22,6 +24,8 @@ export class StudentDashboardComponent {
       this.actived_course_count = response.activated_course_count;
       this.enrolled_course_count = response.enrolled_course_count;
       this.termined_course_count = response.termined_course_count;
+
+      this.profile = response.profile;
     });
   }
 

@@ -158,6 +158,7 @@
           </div>
 
           <div class="col-lg-9">
+            <!-- Start Count -->
             <div
               class="rbt-dashboard-content bg-color-white rbt-shadow-box mb--60"
               *ngIf="navOpt === 1"
@@ -178,7 +179,7 @@
                         </div>
                         <div class="content">
                           <h3 class="counter without-icon color-primary">
-                            <span class="odometer" data-count="30">00</span>
+                            <span class="odometer" data-count="30">{{ enrolled_course_count }}</span>
                           </h3>
                           <span class="rbt-title-style-2 d-block"
                             >Enrolled Courses</span
@@ -200,7 +201,7 @@
                         </div>
                         <div class="content">
                           <h3 class="counter without-icon color-secondary">
-                            <span class="odometer" data-count="10">00</span>
+                            <span class="odometer" data-count="10">{{ actived_course_count }}</span>
                           </h3>
                           <span class="rbt-title-style-2 d-block"
                             >ACTIVE COURSES</span
@@ -222,7 +223,7 @@
                         </div>
                         <div class="content">
                           <h3 class="counter without-icon color-violet">
-                            <span class="odometer" data-count="7">00</span>
+                            <span class="odometer" data-count="7">{{ termined_course_count }}</span>
                           </h3>
                           <span class="rbt-title-style-2 d-block"
                             >Completed Courses</span
@@ -235,6 +236,7 @@
                 </div>
               </div>
             </div>
+            <!-- End Count -->
 
             <!-- Start Instructor Profile  -->
             <div
@@ -252,7 +254,7 @@
                   </div>
                   <div class="col-lg-8 col-md-8">
                     <div class="rbt-profile-content b2">
-                      February 25, 2025 6:01 am
+                      {{ profile.birthday }}
                     </div>
                   </div>
                 </div>
@@ -264,7 +266,7 @@
                     <div class="rbt-profile-content b2">First Name</div>
                   </div>
                   <div class="col-lg-8 col-md-8">
-                    <div class="rbt-profile-content b2">Emily</div>
+                    <div class="rbt-profile-content b2">{{ profile.name }}</div>
                   </div>
                 </div>
                 <!-- End Profile Row  -->
@@ -275,7 +277,7 @@
                     <div class="rbt-profile-content b2">Last Name</div>
                   </div>
                   <div class="col-lg-8 col-md-8">
-                    <div class="rbt-profile-content b2">Hannah</div>
+                    <div class="rbt-profile-content b2">{{ profile.surname }}</div>
                   </div>
                 </div>
                 <!-- End Profile Row  -->
@@ -286,7 +288,7 @@
                     <div class="rbt-profile-content b2">Username</div>
                   </div>
                   <div class="col-lg-8 col-md-8">
-                    <div class="rbt-profile-content b2">instructor</div>
+                    <div class="rbt-profile-content b2">{{ profile.profession }}</div>
                   </div>
                 </div>
                 <!-- End Profile Row  -->
@@ -297,7 +299,7 @@
                     <div class="rbt-profile-content b2">Email</div>
                   </div>
                   <div class="col-lg-8 col-md-8">
-                    <div class="rbt-profile-content b2">examplegmail.com</div>
+                    <div class="rbt-profile-content b2">{{ profile.email }}</div>
                   </div>
                 </div>
                 <!-- End Profile Row  -->
@@ -308,7 +310,7 @@
                     <div class="rbt-profile-content b2">Phone Number</div>
                   </div>
                   <div class="col-lg-8 col-md-8">
-                    <div class="rbt-profile-content b2">+1-202-555-0174</div>
+                    <div class="rbt-profile-content b2">{{ profile.phone }}</div>
                   </div>
                 </div>
                 <!-- End Profile Row  -->
@@ -320,7 +322,7 @@
                   </div>
                   <div class="col-lg-8 col-md-8">
                     <div class="rbt-profile-content b2">
-                      Application Developer
+                      {{ profile.profession }}
                     </div>
                   </div>
                 </div>
@@ -333,9 +335,7 @@
                   </div>
                   <div class="col-lg-8 col-md-8">
                     <div class="rbt-profile-content b2">
-                      I'm the Front-End Developer for #Rainbow IT in Bangladesh,
-                      OR. I have serious passion for UI effects, animations and
-                      creating intuitive, dynamic user experiences.
+                      {{ profile.description }}
                     </div>
                   </div>
                 </div>
