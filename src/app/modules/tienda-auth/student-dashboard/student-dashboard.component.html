@@ -730,7 +730,7 @@
             </div>
             <!-- End Enrole Course  -->
 
-            <!-- Start Enrole Course  -->
+            <!-- Start Reviews  -->
             <div
               class="rbt-dashboard-content bg-color-white rbt-shadow-box"
               *ngIf="navOpt === 4"
@@ -1009,9 +1009,9 @@
                 </div>
               </div>
             </div>
-            <!-- End Enrole Course  -->
+            <!-- End Reviews  -->
 
-            <!-- Start Enrole Course  -->
+            <!-- Start Order History  -->
             <div
               class="rbt-dashboard-content bg-color-white rbt-shadow-box"
               *ngIf="navOpt === 5"
@@ -1028,7 +1028,7 @@
                     <thead>
                       <tr>
                         <th>Order ID</th>
-                        <th>Course Name</th>
+                        <th>Method Payment</th>
                         <th>Date</th>
                         <th>Price</th>
                         <th>Status</th>
@@ -1036,200 +1036,49 @@
                     </thead>
 
                     <tbody>
-                      <tr>
-                        <th>#5478</th>
-                        <td>App Development</td>
-                        <td>January 27, 2022</td>
-                        <td>$100.99</td>
-                        <td>
-                          <span
-                            class="rbt-badge-5 bg-color-success-opacity color-success"
-                            >Success</span
+                      <ng-container *ngFor="let sale of sales">
+                        <tr>
+                          <th>#{{ sale._id }}</th>
+                          <td>{{ sale.method_payment }}</td>
+                          <td>{{ sale.date }}</td>
+                          <td>${{ sale.total }} USD</td>
+                          <td>
+                            <button
+                              class="btn btn-sm btn-danger"
+                              (click)="showDetails(sale)"
+                            >
+                              Details
+                            </button>
+                          </td>
+                        </tr>
+                        <ng-container *ngIf="sale.is_detail">
+                          <ng-container
+                            *ngFor="let sale_detail of sale.sale_details"
                           >
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>#4585</th>
-                        <td>Graphic</td>
-                        <td>May 27, 2022</td>
-                        <td>$200.99</td>
-                        <td>
-                          <span class="rbt-badge-5 bg-primary-opacity"
-                            >Processing</span
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>#9656</th>
-                        <td>Graphic</td>
-                        <td>March 27, 2022</td>
-                        <td>$200.99</td>
-                        <td>
-                          <span
-                            class="rbt-badge-5 bg-color-warning-opacity color-warning"
-                            >On Hold</span
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>#2045</th>
-                        <td>Application</td>
-                        <td>March 27, 2022</td>
-                        <td>$200.99</td>
-                        <td>
-                          <span
-                            class="rbt-badge-5 bg-color-danger-opacity color-danger"
-                            >Canceled</span
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>#5478</th>
-                        <td>App Development</td>
-                        <td>January 27, 2022</td>
-                        <td>$100.99</td>
-                        <td>
-                          <span
-                            class="rbt-badge-5 bg-color-success-opacity color-success"
-                            >Success</span
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>#4585</th>
-                        <td>Graphic</td>
-                        <td>May 27, 2022</td>
-                        <td>$200.99</td>
-                        <td>
-                          <span class="rbt-badge-5 bg-primary-opacity"
-                            >Processing</span
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>#9656</th>
-                        <td>Graphic</td>
-                        <td>March 27, 2022</td>
-                        <td>$200.99</td>
-                        <td>
-                          <span
-                            class="rbt-badge-5 bg-color-warning-opacity color-warning"
-                            >On Hold</span
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>#2045</th>
-                        <td>Application</td>
-                        <td>March 27, 2022</td>
-                        <td>$200.99</td>
-                        <td>
-                          <span
-                            class="rbt-badge-5 bg-color-danger-opacity color-danger"
-                            >Canceled</span
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>#5478</th>
-                        <td>App Development</td>
-                        <td>January 27, 2022</td>
-                        <td>$100.99</td>
-                        <td>
-                          <span
-                            class="rbt-badge-5 bg-color-success-opacity color-success"
-                            >Success</span
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>#4585</th>
-                        <td>Graphic</td>
-                        <td>May 27, 2022</td>
-                        <td>$200.99</td>
-                        <td>
-                          <span class="rbt-badge-5 bg-primary-opacity"
-                            >Processing</span
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>#9656</th>
-                        <td>Graphic</td>
-                        <td>March 27, 2022</td>
-                        <td>$200.99</td>
-                        <td>
-                          <span
-                            class="rbt-badge-5 bg-color-warning-opacity color-warning"
-                            >On Hold</span
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>#2045</th>
-                        <td>Application</td>
-                        <td>March 27, 2022</td>
-                        <td>$200.99</td>
-                        <td>
-                          <span
-                            class="rbt-badge-5 bg-color-danger-opacity color-danger"
-                            >Canceled</span
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>#5478</th>
-                        <td>App Development</td>
-                        <td>January 27, 2022</td>
-                        <td>$100.99</td>
-                        <td>
-                          <span
-                            class="rbt-badge-5 bg-color-success-opacity color-success"
-                            >Success</span
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>#4585</th>
-                        <td>Graphic</td>
-                        <td>May 27, 2022</td>
-                        <td>$200.99</td>
-                        <td>
-                          <span class="rbt-badge-5 bg-primary-opacity"
-                            >Processing</span
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>#9656</th>
-                        <td>Graphic</td>
-                        <td>March 27, 2022</td>
-                        <td>$200.99</td>
-                        <td>
-                          <span
-                            class="rbt-badge-5 bg-color-warning-opacity color-warning"
-                            >On Hold</span
-                          >
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>#2045</th>
-                        <td>Application</td>
-                        <td>March 27, 2022</td>
-                        <td>$200.99</td>
-                        <td>
-                          <span
-                            class="rbt-badge-5 bg-color-danger-opacity color-danger"
-                            >Canceled</span
-                          >
-                        </td>
-                      </tr>
+                            <tr>
+                              <td></td>
+                              <td>
+                                <img
+                                  [src]="sale_detail.course.image"
+                                  style="width: 100px; object-fit: contain"
+                                  alt="image"
+                                />
+                              </td>
+                              <td>{{ sale_detail.course.title }}</td>
+                              <td>${{ sale_detail.total }} USD</td>
+                              <td>
+                                {{ sale_detail.course.categorie.title }}
+                              </td>
+                            </tr>
+                          </ng-container>
+                        </ng-container>
+                      </ng-container>
                     </tbody>
                   </table>
                 </div>
               </div>
             </div>
-            <!-- End Enrole Course  -->
+            <!-- End Order History  -->
 
             <!-- Start Instructor Profile  -->
             <div

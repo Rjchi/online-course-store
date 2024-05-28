@@ -20,6 +20,8 @@ export class StudentDashboardComponent {
   termined_course_news: any = null;
   enrolled_course_news: any = null;
 
+  sales: any = null;
+
   constructor(public tiendaAuthService: TiendaAuthService) {}
 
   ngOnInit(): void {
@@ -34,11 +36,17 @@ export class StudentDashboardComponent {
       this.actived_course_news = response.actived_course_news;
       this.termined_course_news = response.termined_course_news;
       this.enrolled_course_news = response.enrolled_course_news;
+
+      this.sales = response.sales;
     });
   }
 
   navOption(option: number) {
     this.navOpt = option;
+  }
+
+  showDetails(sale: any) {
+    sale.is_detail = true;
   }
 
   logout() {
