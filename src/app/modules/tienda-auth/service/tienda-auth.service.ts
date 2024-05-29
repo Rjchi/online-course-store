@@ -16,4 +16,11 @@ export class TiendaAuthService {
 
     return this.http.post(url, data, { headers });
   }
+
+  profileStudent() {
+    let url = URL_SERVICIOS + 'profile/client';
+    let headers = new HttpHeaders({ token: this.authService.token });
+
+    return this.http.get(url, { headers });
+  }
 }
