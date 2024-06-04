@@ -81,7 +81,7 @@ export class StudentDashboardComponent {
 
     let reader = new FileReader();
     reader.readAsDataURL(this.avatar);
-    reader.onloadend = () => this.avatar_prev = reader.result;
+    reader.onloadend = () => (this.avatar_prev = reader.result);
   }
 
   navOption(option: number) {
@@ -102,7 +102,7 @@ export class StudentDashboardComponent {
       return;
     }
 
-    if (this.password !== this.password_confir) {
+    if (this.password != this.password_confir) {
       this.toaster.open({
         text: 'LA CONTRASEÑA DEBE SER IGUAL',
         caption: 'VALIDACIONES',
@@ -113,21 +113,25 @@ export class StudentDashboardComponent {
 
     let formData = new FormData();
 
-    formData.append("name", this.name);
-    formData.append("email", this.email);
-    formData.append("phone", this.phone);
+    formData.append('name', this.name);
+    formData.append('email', this.email);
+    formData.append('phone', this.phone);
     if (this.avatar) {
-      formData.append("avatar", this.avatar);
+      formData.append('avatar', this.avatar);
     }
-    formData.append("surname", this.surname);
-    formData.append("birthday", this.birthday);
+    formData.append('surname', this.surname);
     if (this.password) {
-      formData.append("password", this.password);
+      formData.append('password', this.password);
     }
-    formData.append("profession", this.profession);
-    formData.append("description", this.description);
+    if (this.birthday) {
+      formData.append('birthday', this.birthday);
+    }
+    formData.append('profession', this.profession);
+    formData.append('description', this.description);
 
-      this.tiendaAuthService.updateStudent(formData).subscribe((response: any) => {
+    this.tiendaAuthService
+      .updateStudent(formData)
+      .subscribe((response: any) => {
         console.log(response);
       });
   }
