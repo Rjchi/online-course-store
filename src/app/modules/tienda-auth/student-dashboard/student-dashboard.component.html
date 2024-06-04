@@ -21,7 +21,7 @@
                 <img [src]="avatar_prev" alt="Instructor" />
               </div>
               <div class="tutor-content">
-                <h5 class="title">Emily Hannah</h5>
+                <h5 class="title">{{ name }}</h5>
                 <ul class="rbt-meta rbt-meta-white mt--5">
                   <li><i class="feather-book"></i>5 Courses Enroled</li>
                   <li><i class="feather-award"></i>4 Certificate</li>
@@ -1256,7 +1256,17 @@
                           >
                         </div>
                       </div>
-                      <div class="col-lg-6 col-md-6 col-sm-6 col-12"></div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="rbt-form-group">
+                          <label for="birthday">Birthday</label>
+                          <input
+                            id="birthday"
+                            type="date"
+                            name="birthday"
+                            [(ngModel)]="birthday"
+                          />
+                        </div>
+                      </div>
                       <div class="col-12">
                         <div class="rbt-form-group">
                           <label for="bio">Description</label>
@@ -1298,18 +1308,10 @@
                     >
                       <div class="col-12">
                         <div class="rbt-form-group">
-                          <label for="currentpassword">Current Password</label>
-                          <input
-                            id="currentpassword"
-                            type="password"
-                            placeholder="Current Password"
-                          />
-                        </div>
-                      </div>
-                      <div class="col-12">
-                        <div class="rbt-form-group">
                           <label for="newpassword">New Password</label>
                           <input
+                            name=""
+                            [(ngModel)]="password"
                             id="newpassword"
                             type="password"
                             placeholder="New Password"
@@ -1322,6 +1324,8 @@
                             >Re-type New Password</label
                           >
                           <input
+                            name=""
+                            [(ngModel)]="password_confir"
                             id="retypenewpassword"
                             type="password"
                             placeholder="Re-type New Password"
@@ -1330,7 +1334,11 @@
                       </div>
                       <div class="col-12 mt--10">
                         <div class="rbt-form-group">
-                          <a class="rbt-btn btn-gradient" href="#"
+                          <a
+                            class="rbt-btn btn-gradient"
+                            href="#"
+                            onclick="return false;"
+                            (click)="updateStudent()"
                             >Update Password</a
                           >
                         </div>
