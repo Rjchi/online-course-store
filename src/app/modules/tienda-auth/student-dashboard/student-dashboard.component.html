@@ -21,9 +21,9 @@
                 <img [src]="avatar_prev" alt="Instructor" />
               </div>
               <div class="tutor-content">
-                <h5 class="title">{{ name }}</h5>
+                <h5 class="title">{{ name + " " + surname }}</h5>
                 <ul class="rbt-meta rbt-meta-white mt--5">
-                  <li><i class="feather-book"></i>5 Courses Enroled</li>
+                  <li><i class="feather-book"></i>{{ enrolled_course_count }} Courses Enroled</li>
                   <li><i class="feather-award"></i>4 Certificate</li>
                 </ul>
               </div>
