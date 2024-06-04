@@ -18,7 +18,7 @@
           <div class="rbt-tutor-information">
             <div class="rbt-tutor-information-left">
               <div class="thumbnail rbt-avatars size-lg">
-                <img src="assets/images/team/avatar-2.jpg" alt="Instructor" />
+                <img [src]="avatar_prev" alt="Instructor" />
               </div>
               <div class="tutor-content">
                 <h5 class="title">Emily Hannah</h5>
@@ -1158,10 +1158,7 @@
                           <div
                             class="thumbnail rbt-avatars size-lg position-relative"
                           >
-                            <img
-                              src="assets/images/team/avatar-2.jpg"
-                              alt="Instructor"
-                            />
+                            <img [src]="avatar_prev" alt="Instructor" />
                             <div class="rbt-edit-photo-inner">
                               <button
                                 class="rbt-edit-photo"
@@ -1192,19 +1189,34 @@
                       <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="rbt-form-group">
                           <label for="firstname">First Name</label>
-                          <input id="firstname" type="text" value="John" />
+                          <input
+                            id="firstname"
+                            type="text"
+                            name="name"
+                            [(ngModel)]="name"
+                          />
                         </div>
                       </div>
                       <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="rbt-form-group">
                           <label for="lastname">Last Name</label>
-                          <input id="lastname" type="text" value="Due" />
+                          <input
+                            id="lastname"
+                            type="text"
+                            name="surname"
+                            [(ngModel)]="surname"
+                          />
                         </div>
                       </div>
                       <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="rbt-form-group">
-                          <label for="username">User Name</label>
-                          <input id="username" type="text" value="johndue" />
+                          <label for="username">Email</label>
+                          <input
+                            id="username"
+                            type="email"
+                            name="email"
+                            [(ngModel)]="email"
+                          />
                         </div>
                       </div>
                       <div class="col-lg-6 col-md-6 col-sm-6 col-12">
@@ -1213,7 +1225,8 @@
                           <input
                             id="phonenumber"
                             type="tel"
-                            value="+1-202-555-0174"
+                            name="phone"
+                            [(ngModel)]="phone"
                           />
                         </div>
                       </div>
@@ -1223,30 +1236,38 @@
                           <input
                             id="skill"
                             type="text"
-                            value="Full Stack Developer"
+                            name="profession"
+                            [(ngModel)]="profession"
                           />
                         </div>
                       </div>
                       <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                        <div class="filter-select rbt-modern-select">
-                          <label for="displayname" class=""
-                            >Display name publicly as</label
-                          >
-                          <select id="displayname" class="w-100">
-                            <option>Emily Hannah</option>
-                            <option>John</option>
-                            <option>Due</option>
-                            <option>Due John</option>
-                            <option>johndue</option>
-                          </select>
+                          <label class="form-label">Sube tu imagen: *</label>
+                          <div class="custom-file">
+                            <input
+                              type="file"
+                              class="custom-file-input"
+                              id="customFile"
+                              accept=".jpeg, .bmp, .jpg, .png, .gif, .webp"
+                              (change)="processFile($event)"
+                            />
+                            <label class="custom-file-label" for="customFile"
+                              >Choose file</label
+                            >
                         </div>
                       </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-12"></div>
                       <div class="col-12">
                         <div class="rbt-form-group">
-                          <label for="bio">Bio</label>
-                          <textarea id="bio" cols="20" rows="5">
-I'm the Front-End Developer for #Rainbow IT in Bangladesh, OR. I have serious passion for UI effects, animations and creating intuitive, dynamic user experiences.</textarea
+                          <label for="bio">Description</label>
+                          <textarea
+                            id="bio"
+                            cols="20"
+                            rows="5"
+                            name="description"
+                            [(ngModel)]="description"
                           >
+                          </textarea>
                         </div>
                       </div>
                       <div class="col-12 mt--20">
