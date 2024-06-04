@@ -1242,18 +1242,18 @@
                         </div>
                       </div>
                       <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                          <label class="form-label">Sube tu imagen: *</label>
-                          <div class="custom-file">
-                            <input
-                              type="file"
-                              class="custom-file-input"
-                              id="customFile"
-                              accept=".jpeg, .bmp, .jpg, .png, .gif, .webp"
-                              (change)="processFile($event)"
-                            />
-                            <label class="custom-file-label" for="customFile"
-                              >Choose file</label
-                            >
+                        <label class="form-label">Sube tu imagen: *</label>
+                        <div class="custom-file">
+                          <input
+                            type="file"
+                            class="custom-file-input"
+                            id="customFile"
+                            accept=".jpeg, .bmp, .jpg, .png, .gif, .webp"
+                            (change)="processFile($event)"
+                          />
+                          <label class="custom-file-label" for="customFile"
+                            >Choose file</label
+                          >
                         </div>
                       </div>
                       <div class="col-lg-6 col-md-6 col-sm-6 col-12"></div>
@@ -1272,7 +1272,11 @@
                       </div>
                       <div class="col-12 mt--20">
                         <div class="rbt-form-group">
-                          <a class="rbt-btn btn-gradient" href="#"
+                          <a
+                            class="rbt-btn btn-gradient"
+                            href="#"
+                            onclick="return false;"
+                            (click)="updateStudent()"
                             >Update Info</a
                           >
                         </div>
