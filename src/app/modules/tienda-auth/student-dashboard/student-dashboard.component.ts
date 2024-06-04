@@ -92,6 +92,46 @@ export class StudentDashboardComponent {
     sale.is_detail = true;
   }
 
+  updateStudent() {
+    if (!this.name || !this.surname || !this.email) {
+      this.toaster.open({
+        text: 'NECESITAS COMPLETAR LOS CAMPOS',
+        caption: 'VALIDACIONES',
+        type: 'danger',
+      });
+      return;
+    }
+
+    if (this.password !== this.password_confir) {
+      this.toaster.open({
+        text: 'LA CONTRASEÑA DEBE SER IGUAL',
+        caption: 'VALIDACIONES',
+        type: 'danger',
+      });
+      return;
+    }
+
+    let formData = new FormData();
+
+    formData.append("name", this.name);
+    formData.append("email", this.email);
+    formData.append("phone", this.phone);
+    if (this.avatar) {
+      formData.append("avatar", this.avatar);
+    }
+    formData.append("surname", this.surname);
+    formData.append("birthday", this.birthday);
+    if (this.password) {
+      formData.append("password", this.password);
+    }
+    formData.append("profession", this.profession);
+    formData.append("description", this.description);
+
+      this.tiendaAuthService.updateStudent(formData).subscribe((response: any) => {
+        console.log(response);
+      });
+  }
+
   logout() {
     console.log('logout');
   }

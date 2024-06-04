@@ -23,4 +23,11 @@ export class TiendaAuthService {
 
     return this.http.get(url, { headers });
   }
+
+  updateStudent(data: any) {
+    let url = URL_SERVICIOS + 'profile/update';
+    let headers = new HttpHeaders({ token: this.authService.token });
+
+    return this.http.put(url, data, { headers });
+  }
 }
