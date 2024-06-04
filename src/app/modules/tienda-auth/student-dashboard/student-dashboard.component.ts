@@ -132,7 +132,27 @@ export class StudentDashboardComponent {
     this.tiendaAuthService
       .updateStudent(formData)
       .subscribe((response: any) => {
-        console.log(response);
+        if (response.message === 403) {
+          this.toaster.open({
+            text: response.msg,
+            caption: 'VALIDACIONES',
+            type: 'danger',
+          });
+
+          return;
+        } else {
+          this.toaster.open({
+            text: response.msg,
+            caption: 'VALIDACIONES',
+            type: 'primary',
+          });
+
+          localStorage.setItem("user", JSON.stringify({
+            name: this.name,
+            email: this.email,
+            surname: this.surname,
+          }));
+        }
       });
   }
 
