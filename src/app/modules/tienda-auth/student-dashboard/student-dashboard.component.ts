@@ -9,7 +9,7 @@ import { TiendaAuthService } from '../service/tienda-auth.service';
   styleUrls: ['./student-dashboard.component.css'],
 })
 export class StudentDashboardComponent {
-  navOpt: number = 6;
+  navOpt: number = 4;
 
   actived_course_count: number = 0;
   enrolled_course_count: number = 0;
@@ -34,6 +34,8 @@ export class StudentDashboardComponent {
   avatar_prev: any = null;
   description: string = '';
   password_confir: string = '';
+
+  sales_details: any = null;
 
   constructor(
     public toaster: Toaster,
@@ -64,6 +66,7 @@ export class StudentDashboardComponent {
       this.enrolled_course_news = response.enrolled_course_news;
 
       this.sales = response.sales;
+      this.sales_details = response.sales_details;
     });
   }
 
@@ -154,6 +157,10 @@ export class StudentDashboardComponent {
           }));
         }
       });
+  }
+
+  showReview(sale_detail: any) {
+    console.log(sale_detail.course.title)
   }
 
   logout() {
