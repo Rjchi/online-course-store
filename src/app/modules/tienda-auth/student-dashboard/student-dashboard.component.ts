@@ -236,6 +236,52 @@ export class StudentDashboardComponent {
     });
   }
 
+  updateReview() {
+    if (this.rating === 0) {
+      this.toaster.open({
+        text: 'NECESITAS SELECCIONAR UNA CLASIFICACIÓN',
+        caption: 'VALIDACIONES',
+        type: 'primary',
+      });
+
+      return;
+    }
+
+    if (!this.description_review) {
+      this.toaster.open({
+        text: 'NECESITAR INGRESAR UNA DESCRIPCIÓN',
+        caption: 'VALIDACIONES',
+        type: 'primary',
+      });
+
+      return;
+    }
+
+    const data = {
+      rating: this.rating,
+      description: this.description_review,
+      sale_detail: this.sale_detail_selected._id,
+      course: this.sale_detail_selected.course._id,
+      _id: this.sale_detail_selected.review._id,
+    };
+
+    this.tiendaAuthService.reviewUpdate(data).subscribe((response: any) => {
+      this.toaster.open({
+        text: response.message_text,
+        caption: 'VALIDACIONES',
+        type: 'primary',
+      });
+
+      const index = this.sales_details.findIndex(
+        (item: any) => item._id === this.sale_detail_selected._id
+      );
+
+      if (index != -1) {
+        this.sales_details[index].review = response.review;
+      }
+    });
+  }
+
   selectedRating(option: number) {
     this.rating = option;
   }

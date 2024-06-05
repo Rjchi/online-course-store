@@ -855,6 +855,7 @@
                           class="rbt-btn btn-gradient btn-md"
                           href="#"
                           onclick="return false;"
+                          *ngIf="!sale_detail_selected.review"
                           (click)="saveReview()"
                           >Register Review</a
                         >
@@ -865,16 +866,15 @@
                           (click)="back()"
                           >Back</a
                         >
+                        <a
+                          class="rbt-btn btn-gradient btn-md mt-1"
+                          href="#"
+                          onclick="return false;"
+                          *ngIf="sale_detail_selected.review"
+                          (click)="updateReview()"
+                          >Update Review</a
+                        >
                       </div>
-                      <!-- <div class="rbt-form-group">
-                      <a
-                        class="rbt-btn btn-gradient"
-                        href="#"
-                        onclick="return false;"
-                        (click)="updateStudent()"
-                        >Update Info</a
-                      >
-                    </div> -->
                     </div>
                   </div>
                 </div>
