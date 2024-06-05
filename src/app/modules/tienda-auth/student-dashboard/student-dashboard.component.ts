@@ -9,7 +9,7 @@ import { TiendaAuthService } from '../service/tienda-auth.service';
   styleUrls: ['./student-dashboard.component.css'],
 })
 export class StudentDashboardComponent {
-  navOpt: number = 4;
+  navOpt: number = 1;
 
   actived_course_count: number = 0;
   enrolled_course_count: number = 0;
