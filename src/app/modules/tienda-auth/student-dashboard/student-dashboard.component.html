@@ -774,9 +774,9 @@
                                 <i class="fas fa-star" [ngClass]="{'rating': sale_detail.review.rating < 4}"></i>
                                 <i class="fas fa-star" [ngClass]="{'rating': sale_detail.review.rating < 5}"></i>
                               </div>
-                              <span class="rating-count"> ({{ sale_detail.review.rating }} Reviews)</span>
+                              <span class="rating-count"> ({{ sale_detail.review.rating }} Rating)</span>
                             </div>
-                            <p class="b2" *ngIf="!sale_detail.review">Sin review</p>
+                            <p class="b2" *ngIf="!sale_detail.review">Sin Rating</p>
                           </td>
                           <td>
                             <div class="rbt-button-group justify-content-end">

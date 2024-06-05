@@ -291,6 +291,6 @@ export class StudentDashboardComponent {
   }
 
   logout() {
-    console.log('logout');
+    this.tiendaAuthService.authService.logout();
   }
 }
