@@ -766,17 +766,17 @@
                             >
                           </th>
                           <td>
-                            <div class="rbt-review">
+                            <div class="rbt-review" *ngIf="sale_detail.review">
                               <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star" [ngClass]="{'rating': sale_detail.review.rating < 1}"></i>
+                                <i class="fas fa-star" [ngClass]="{'rating': sale_detail.review.rating < 2}"></i>
+                                <i class="fas fa-star" [ngClass]="{'rating': sale_detail.review.rating < 3}"></i>
+                                <i class="fas fa-star" [ngClass]="{'rating': sale_detail.review.rating < 4}"></i>
+                                <i class="fas fa-star" [ngClass]="{'rating': sale_detail.review.rating < 5}"></i>
                               </div>
-                              <span class="rating-count"> (9 Reviews)</span>
+                              <span class="rating-count"> ({{ sale_detail.review.rating }} Reviews)</span>
                             </div>
-                            <p class="b2">Good</p>
+                            <p class="b2" *ngIf="!sale_detail.review">Sin review</p>
                           </td>
                           <td>
                             <div class="rbt-button-group justify-content-end">
