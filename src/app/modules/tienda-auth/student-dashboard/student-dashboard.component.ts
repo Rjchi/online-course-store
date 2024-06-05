@@ -167,8 +167,24 @@ export class StudentDashboardComponent {
 
   showReview(sale_detail: any) {
     this.sale_detail_selected = sale_detail;
-    this.rating = this.sale_detail_selected.review.rating;
-    this.description_review = this.sale_detail_selected.review.description;
+
+    if (
+      this.sale_detail_selected.review &&
+      this.sale_detail_selected.review.rating
+    ) {
+      this.rating = this.sale_detail_selected.review.rating;
+    } else {
+      this.rating = 0;
+    }
+
+    if (
+      this.sale_detail_selected.review &&
+      this.sale_detail_selected.review.description
+    ) {
+      this.description_review = this.sale_detail_selected.review.description;
+    } else {
+      this.description_review = '';
+    }
   }
 
   saveReview() {
