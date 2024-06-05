@@ -167,6 +167,8 @@ export class StudentDashboardComponent {
 
   showReview(sale_detail: any) {
     this.sale_detail_selected = sale_detail;
+    this.rating = this.sale_detail_selected.review.rating;
+    this.description_review = this.sale_detail_selected.review.description;
   }
 
   saveReview() {
@@ -204,8 +206,16 @@ export class StudentDashboardComponent {
         type: 'primary',
       });
 
+      const index = this.sales_details.findIndex(
+        (item: any) => item._id === this.sale_detail_selected._id
+      );
+
+      if (index != -1) {
+        this.sales_details[index].review = response.review;
+      }
+
       this.rating = 0;
-      this.description_review = "";
+      this.description_review = '';
       this.sale_detail_selected = null;
     });
   }
