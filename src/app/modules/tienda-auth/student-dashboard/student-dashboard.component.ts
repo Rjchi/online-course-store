@@ -35,7 +35,10 @@ export class StudentDashboardComponent {
   description: string = '';
   password_confir: string = '';
 
+  rating: number = 0;
   sales_details: any = null;
+  description_review: string = '';
+  sale_detail_selected: any = null;
 
   constructor(
     public toaster: Toaster,
@@ -150,17 +153,69 @@ export class StudentDashboardComponent {
             type: 'primary',
           });
 
-          localStorage.setItem("user", JSON.stringify({
-            name: this.name,
-            email: this.email,
-            surname: this.surname,
-          }));
+          localStorage.setItem(
+            'user',
+            JSON.stringify({
+              name: this.name,
+              email: this.email,
+              surname: this.surname,
+            })
+          );
         }
       });
   }
 
   showReview(sale_detail: any) {
-    console.log(sale_detail.course.title)
+    this.sale_detail_selected = sale_detail;
+  }
+
+  saveReview() {
+    if (this.rating === 0) {
+      this.toaster.open({
+        text: 'NECESITAS SELECCIONAR UNA CLASIFICACIÓN',
+        caption: 'VALIDACIONES',
+        type: 'primary',
+      });
+
+      return;
+    }
+
+    if (!this.description_review) {
+      this.toaster.open({
+        text: 'NECESITAR INGRESAR UNA DESCRIPCIÓN',
+        caption: 'VALIDACIONES',
+        type: 'primary',
+      });
+
+      return;
+    }
+
+    const data = {
+      rating: this.rating,
+      description: this.description_review,
+      sale_detail: this.sale_detail_selected._id,
+      course: this.sale_detail_selected.course._id,
+    };
+
+    this.tiendaAuthService.reviewRegister(data).subscribe((response: any) => {
+      this.toaster.open({
+        text: response.message_text,
+        caption: 'VALIDACIONES',
+        type: 'primary',
+      });
+
+      this.rating = 0;
+      this.description_review = "";
+      this.sale_detail_selected = null;
+    });
+  }
+
+  selectedRating(option: number) {
+    this.rating = option;
+  }
+
+  back() {
+    this.sale_detail_selected = null;
   }
 
   logout() {

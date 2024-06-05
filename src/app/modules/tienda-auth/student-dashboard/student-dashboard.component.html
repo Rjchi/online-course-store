@@ -20,7 +20,7 @@
               <div class="thumbnail rbt-avatars size-lg">
                 <img [src]="avatar_prev" alt="Instructor" />
               </div>
-              <div class="tutor-content">
+              <div class="tutor-content" *ngIf="name&&surname">
                 <h5 class="title">{{ name + " " + surname }}</h5>
                 <ul class="rbt-meta rbt-meta-white mt--5">
                   <li>
@@ -852,11 +852,18 @@
                     <div class="col-12 mt--20">
                       <div class="rbt-form-group">
                         <a
-                          class="rbt-btn btn-gradient"
+                          class="rbt-btn btn-gradient btn-md"
                           href="#"
                           onclick="return false;"
                           (click)="saveReview()"
                           >Register Review</a
+                        >
+                        <a
+                          class="rbt-btn btn-dark btn-md mx-2"
+                          href="#"
+                          onclick="return false;"
+                          (click)="back()"
+                          >Back</a
                         >
                       </div>
                       <!-- <div class="rbt-form-group">
