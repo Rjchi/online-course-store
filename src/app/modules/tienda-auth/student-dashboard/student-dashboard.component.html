@@ -23,7 +23,10 @@
               <div class="tutor-content">
                 <h5 class="title">{{ name + " " + surname }}</h5>
                 <ul class="rbt-meta rbt-meta-white mt--5">
-                  <li><i class="feather-book"></i>{{ enrolled_course_count }} Courses Enroled</li>
+                  <li>
+                    <i class="feather-book"></i
+                    >{{ enrolled_course_count }} Courses Enroled
+                  </li>
                   <li><i class="feather-award"></i>4 Certificate</li>
                 </ul>
               </div>
@@ -742,6 +745,7 @@
 
                 <div
                   class="rbt-dashboard-table table-responsive mobile-table-750"
+                  *ngIf="!sale_detail_selected"
                 >
                   <table class="rbt-table table table-borderless">
                     <thead>
@@ -756,7 +760,9 @@
                         <tr>
                           <th>
                             <span class="b3"
-                              ><a href="#">{{ sale_detail.course.title }}</a></span
+                              ><a href="#">{{
+                                sale_detail.course.title
+                              }}</a></span
                             >
                           </th>
                           <td>
@@ -788,6 +794,82 @@
                       </ng-container>
                     </tbody>
                   </table>
+                </div>
+                <div
+                  class="rbt-dashboard-table table-responsive mobile-table-750"
+                  *ngIf="sale_detail_selected"
+                >
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="rbt-review">
+                        <div class="">
+                          <i
+                            class="fas fa-star"
+                            (click)="selectedRating(1)"
+                            style="font-size: xx-large; cursor: pointer"
+                            [ngClass]="{'color-warning': rating >= 1}"
+                          ></i>
+                          <i
+                            class="fas fa-star"
+                            (click)="selectedRating(2)"
+                            style="font-size: xx-large; cursor: pointer"
+                            [ngClass]="{'color-warning': rating >= 2}"
+                          ></i>
+                          <i
+                            class="fas fa-star"
+                            (click)="selectedRating(3)"
+                            style="font-size: xx-large; cursor: pointer"
+                            [ngClass]="{'color-warning': rating >= 3}"
+                          ></i>
+                          <i
+                            class="fas fa-star"
+                            (click)="selectedRating(4)"
+                            style="font-size: xx-large; cursor: pointer"
+                            [ngClass]="{'color-warning': rating >= 4}"
+                          ></i>
+                          <i
+                            class="fas fa-star"
+                            (click)="selectedRating(5)"
+                            style="font-size: xx-large; cursor: pointer"
+                            [ngClass]="{'color-warning': rating >= 5}"
+                          ></i>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 mt--20">
+                      <div class="rbt-form-group">
+                        <label for="bio">Description</label>
+                        <textarea
+                          id="bio"
+                          cols="20"
+                          rows="5"
+                          name="description_review"
+                          [(ngModel)]="description_review"
+                        >
+                        </textarea>
+                      </div>
+                    </div>
+                    <div class="col-12 mt--20">
+                      <div class="rbt-form-group">
+                        <a
+                          class="rbt-btn btn-gradient"
+                          href="#"
+                          onclick="return false;"
+                          (click)="saveReview()"
+                          >Register Review</a
+                        >
+                      </div>
+                      <!-- <div class="rbt-form-group">
+                      <a
+                        class="rbt-btn btn-gradient"
+                        href="#"
+                        onclick="return false;"
+                        (click)="updateStudent()"
+                        >Update Info</a
+                      >
+                    </div> -->
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
