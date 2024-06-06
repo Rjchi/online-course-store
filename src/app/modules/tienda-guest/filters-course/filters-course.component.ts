@@ -11,7 +11,7 @@ export class FiltersCourseComponent {
   levels: any = [];
   idiomas: any = [];
   categories: any = [];
-  intructores: any = [];
+  instructores: any = [];
 
   constructor(public tiendaGuestService: TiendaGuestService) {}
 
@@ -20,7 +20,7 @@ export class FiltersCourseComponent {
       this.levels = response.levels;
       this.idiomas = response.idiomas;
       this.categories = response.categories;
-      this.intructores = response.intructores;
+      this.instructores = response.instructores;
     });
   }
 }
