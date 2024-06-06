@@ -8,12 +8,14 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { TiendaGuestComponent } from './tienda-guest.component';
 import { LandingCourseComponent } from './landing-course/landing-course.component';
 import { TiendaGuestRoutingModule } from './tienda-guest-routing.module';
+import { FiltersCourseComponent } from './filters-course/filters-course.component';
 
 
 @NgModule({
   declarations: [
     TiendaGuestComponent,
-    LandingCourseComponent
+    LandingCourseComponent,
+    FiltersCourseComponent
   ],
   imports: [
     CommonModule,
