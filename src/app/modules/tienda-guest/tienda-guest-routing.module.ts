@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { TiendaGuestComponent } from './tienda-guest.component';
 import { LandingCourseComponent } from './landing-course/landing-course.component';
+import { FiltersCourseComponent } from './filters-course/filters-course.component';
 
 const routes: Routes = [
   {
@@ -12,6 +13,10 @@ const routes: Routes = [
       {
         path: 'landig-course/:slug',
         component: LandingCourseComponent,
+      },
+      {
+        path: 'filters-course',
+        component: FiltersCourseComponent,
       },
     ],
   },

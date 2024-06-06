@@ -23,4 +23,25 @@ export class TiendaAuthService {
 
     return this.http.get(url, { headers });
   }
+
+  updateStudent(data: any) {
+    let url = URL_SERVICIOS + 'profile/update';
+    let headers = new HttpHeaders({ token: this.authService.token });
+
+    return this.http.put(url, data, { headers });
+  }
+
+  reviewUpdate(data: any) {
+    let url = URL_SERVICIOS + 'profile/review-update';
+    let headers = new HttpHeaders({ token: this.authService.token });
+
+    return this.http.put(url, data, { headers });
+  }
+
+  reviewRegister(data: any) {
+    let url = URL_SERVICIOS + 'profile/review-register';
+    let headers = new HttpHeaders({ token: this.authService.token });
+
+    return this.http.post(url, data, { headers });
+  }
 }

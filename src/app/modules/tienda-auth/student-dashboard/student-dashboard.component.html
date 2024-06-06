@@ -18,12 +18,15 @@
           <div class="rbt-tutor-information">
             <div class="rbt-tutor-information-left">
               <div class="thumbnail rbt-avatars size-lg">
-                <img src="assets/images/team/avatar-2.jpg" alt="Instructor" />
+                <img [src]="avatar_prev" alt="Instructor" />
               </div>
-              <div class="tutor-content">
-                <h5 class="title">Emily Hannah</h5>
+              <div class="tutor-content" *ngIf="name&&surname">
+                <h5 class="title">{{ name + " " + surname }}</h5>
                 <ul class="rbt-meta rbt-meta-white mt--5">
-                  <li><i class="feather-book"></i>5 Courses Enroled</li>
+                  <li>
+                    <i class="feather-book"></i
+                    >{{ enrolled_course_count }} Courses Enroled
+                  </li>
                   <li><i class="feather-award"></i>4 Certificate</li>
                 </ul>
               </div>
@@ -742,6 +745,7 @@
 
                 <div
                   class="rbt-dashboard-table table-responsive mobile-table-750"
+                  *ngIf="!sale_detail_selected"
                 >
                   <table class="rbt-table table table-borderless">
                     <thead>
@@ -752,260 +756,127 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <th>
-                          <span class="b3"
-                            ><a href="#">Speaking Korean for Beginners</a></span
-                          >
-                        </th>
-                        <td>
-                          <div class="rbt-review">
-                            <div class="rating">
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
+                      <ng-container *ngFor="let sale_detail of sales_details">
+                        <tr>
+                          <th>
+                            <span class="b3"
+                              ><a href="#">{{
+                                sale_detail.course.title
+                              }}</a></span
+                            >
+                          </th>
+                          <td>
+                            <div class="rbt-review" *ngIf="sale_detail.review">
+                              <div class="rating">
+                                <i class="fas fa-star" [ngClass]="{'rating': sale_detail.review.rating < 1}"></i>
+                                <i class="fas fa-star" [ngClass]="{'rating': sale_detail.review.rating < 2}"></i>
+                                <i class="fas fa-star" [ngClass]="{'rating': sale_detail.review.rating < 3}"></i>
+                                <i class="fas fa-star" [ngClass]="{'rating': sale_detail.review.rating < 4}"></i>
+                                <i class="fas fa-star" [ngClass]="{'rating': sale_detail.review.rating < 5}"></i>
+                              </div>
+                              <span class="rating-count"> ({{ sale_detail.review.rating }} Rating)</span>
                             </div>
-                            <span class="rating-count"> (9 Reviews)</span>
-                          </div>
-                          <p class="b2">Good</p>
-                        </td>
-                        <td>
-                          <div class="rbt-button-group justify-content-end">
-                            <a
-                              class="rbt-btn btn-xs bg-primary-opacity radius-round"
-                              href="#"
-                              title="Edit"
-                              ><i class="feather-edit pl--0"></i
-                            ></a>
-                            <a
-                              class="rbt-btn btn-xs bg-color-danger-opacity radius-round color-danger"
-                              href="#"
-                              title="Delete"
-                              ><i class="feather-trash-2 pl--0"></i
-                            ></a>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>
-                          <span class="b3"
-                            ><a href="#">Introduction to Calculus</a></span
-                          >
-                        </th>
-                        <td>
-                          <div class="rbt-review">
-                            <div class="rating">
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
+                            <p class="b2" *ngIf="!sale_detail.review">Sin Rating</p>
+                          </td>
+                          <td>
+                            <div class="rbt-button-group justify-content-end">
+                              <a
+                                class="rbt-btn btn-xs bg-primary-opacity radius-round"
+                                href="#"
+                                title="Edit"
+                                onclick="return false;"
+                                (click)="showReview(sale_detail)"
+                                ><i class="feather-edit pl--0"></i
+                              ></a>
                             </div>
-                            <span class="rating-count"> (9 Reviews)</span>
-                          </div>
-                          <p class="b2">Good</p>
-                        </td>
-                        <td>
-                          <div class="rbt-button-group justify-content-end">
-                            <a
-                              class="rbt-btn btn-xs bg-primary-opacity radius-round"
-                              href="#"
-                              title="Edit"
-                              ><i class="feather-edit pl--0"></i
-                            ></a>
-                            <a
-                              class="rbt-btn btn-xs bg-color-danger-opacity radius-round color-danger"
-                              href="#"
-                              title="Delete"
-                              ><i class="feather-trash-2 pl--0"></i
-                            ></a>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>
-                          <span class="b3"
-                            ><a href="#">How to Write Your First Novel</a></span
-                          >
-                        </th>
-                        <td>
-                          <div class="rbt-review">
-                            <div class="rating">
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                            </div>
-                            <span class="rating-count"> (9 Reviews)</span>
-                          </div>
-                          <p class="b2">Good</p>
-                        </td>
-                        <td>
-                          <div class="rbt-button-group justify-content-end">
-                            <a
-                              class="rbt-btn btn-xs bg-primary-opacity radius-round"
-                              href="#"
-                              title="Edit"
-                              ><i class="feather-edit pl--0"></i
-                            ></a>
-                            <a
-                              class="rbt-btn btn-xs bg-color-danger-opacity radius-round color-danger"
-                              href="#"
-                              title="Delete"
-                              ><i class="feather-trash-2 pl--0"></i
-                            ></a>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>
-                          <span class="b3"
-                            ><a href="#">Speaking Korean for Beginners</a></span
-                          >
-                        </th>
-                        <td>
-                          <div class="rbt-review">
-                            <div class="rating">
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                            </div>
-                            <span class="rating-count"> (9 Reviews)</span>
-                          </div>
-                          <p class="b2">Good</p>
-                        </td>
-                        <td>
-                          <div class="rbt-button-group justify-content-end">
-                            <a
-                              class="rbt-btn btn-xs bg-primary-opacity radius-round"
-                              href="#"
-                              title="Edit"
-                              ><i class="feather-edit pl--0"></i
-                            ></a>
-                            <a
-                              class="rbt-btn btn-xs bg-color-danger-opacity radius-round color-danger"
-                              href="#"
-                              title="Delete"
-                              ><i class="feather-trash-2 pl--0"></i
-                            ></a>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>
-                          <span class="b3"
-                            ><a href="#">How to Write Your First Novel</a></span
-                          >
-                        </th>
-                        <td>
-                          <div class="rbt-review">
-                            <div class="rating">
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                            </div>
-                            <span class="rating-count"> (9 Reviews)</span>
-                          </div>
-                          <p class="b2">Good</p>
-                        </td>
-                        <td>
-                          <div class="rbt-button-group justify-content-end">
-                            <a
-                              class="rbt-btn btn-xs bg-primary-opacity radius-round"
-                              href="#"
-                              title="Edit"
-                              ><i class="feather-edit pl--0"></i
-                            ></a>
-                            <a
-                              class="rbt-btn btn-xs bg-color-danger-opacity radius-round color-danger"
-                              href="#"
-                              title="Delete"
-                              ><i class="feather-trash-2 pl--0"></i
-                            ></a>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>
-                          <span class="b3"
-                            ><a href="#">Speaking Korean for Beginners</a></span
-                          >
-                        </th>
-                        <td>
-                          <div class="rbt-review">
-                            <div class="rating">
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                            </div>
-                            <span class="rating-count"> (9 Reviews)</span>
-                          </div>
-                          <p class="b2">Good</p>
-                        </td>
-                        <td>
-                          <div class="rbt-button-group justify-content-end">
-                            <a
-                              class="rbt-btn btn-xs bg-primary-opacity radius-round"
-                              href="#"
-                              title="Edit"
-                              ><i class="feather-edit pl--0"></i
-                            ></a>
-                            <a
-                              class="rbt-btn btn-xs bg-color-danger-opacity radius-round color-danger"
-                              href="#"
-                              title="Delete"
-                              ><i class="feather-trash-2 pl--0"></i
-                            ></a>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th>
-                          <span class="b3"
-                            ><a href="#">Speaking Korean for Beginners</a></span
-                          >
-                        </th>
-                        <td>
-                          <div class="rbt-review">
-                            <div class="rating">
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                              <i class="fas fa-star"></i>
-                            </div>
-                            <span class="rating-count"> (9 Reviews)</span>
-                          </div>
-                          <p class="b2">Good</p>
-                        </td>
-                        <td>
-                          <div class="rbt-button-group justify-content-end">
-                            <a
-                              class="rbt-btn btn-xs bg-primary-opacity radius-round"
-                              href="#"
-                              title="Edit"
-                              ><i class="feather-edit pl--0"></i
-                            ></a>
-                            <a
-                              class="rbt-btn btn-xs bg-color-danger-opacity radius-round color-danger"
-                              href="#"
-                              title="Delete"
-                              ><i class="feather-trash-2 pl--0"></i
-                            ></a>
-                          </div>
-                        </td>
-                      </tr>
+                          </td>
+                        </tr>
+                      </ng-container>
                     </tbody>
                   </table>
+                </div>
+                <div
+                  class="rbt-dashboard-table table-responsive mobile-table-750"
+                  *ngIf="sale_detail_selected"
+                >
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="rbt-review">
+                        <div class="">
+                          <i
+                            class="fas fa-star"
+                            (click)="selectedRating(1)"
+                            style="font-size: xx-large; cursor: pointer"
+                            [ngClass]="{'color-warning': rating >= 1}"
+                          ></i>
+                          <i
+                            class="fas fa-star"
+                            (click)="selectedRating(2)"
+                            style="font-size: xx-large; cursor: pointer"
+                            [ngClass]="{'color-warning': rating >= 2}"
+                          ></i>
+                          <i
+                            class="fas fa-star"
+                            (click)="selectedRating(3)"
+                            style="font-size: xx-large; cursor: pointer"
+                            [ngClass]="{'color-warning': rating >= 3}"
+                          ></i>
+                          <i
+                            class="fas fa-star"
+                            (click)="selectedRating(4)"
+                            style="font-size: xx-large; cursor: pointer"
+                            [ngClass]="{'color-warning': rating >= 4}"
+                          ></i>
+                          <i
+                            class="fas fa-star"
+                            (click)="selectedRating(5)"
+                            style="font-size: xx-large; cursor: pointer"
+                            [ngClass]="{'color-warning': rating >= 5}"
+                          ></i>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 mt--20">
+                      <div class="rbt-form-group">
+                        <label for="bio">Description</label>
+                        <textarea
+                          id="bio"
+                          cols="20"
+                          rows="5"
+                          name="description_review"
+                          [(ngModel)]="description_review"
+                        >
+                        </textarea>
+                      </div>
+                    </div>
+                    <div class="col-12 mt--20">
+                      <div class="rbt-form-group">
+                        <a
+                          class="rbt-btn btn-gradient btn-md"
+                          href="#"
+                          onclick="return false;"
+                          *ngIf="!sale_detail_selected.review"
+                          (click)="saveReview()"
+                          >Register Review</a
+                        >
+                        <a
+                          class="rbt-btn btn-dark btn-md mx-2"
+                          href="#"
+                          onclick="return false;"
+                          (click)="back()"
+                          >Back</a
+                        >
+                        <a
+                          class="rbt-btn btn-gradient btn-md mt-1"
+                          href="#"
+                          onclick="return false;"
+                          *ngIf="sale_detail_selected.review"
+                          (click)="updateReview()"
+                          >Update Review</a
+                        >
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -1158,10 +1029,7 @@
                           <div
                             class="thumbnail rbt-avatars size-lg position-relative"
                           >
-                            <img
-                              src="assets/images/team/avatar-2.jpg"
-                              alt="Instructor"
-                            />
+                            <img [src]="avatar_prev" alt="Instructor" />
                             <div class="rbt-edit-photo-inner">
                               <button
                                 class="rbt-edit-photo"
@@ -1192,19 +1060,34 @@
                       <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="rbt-form-group">
                           <label for="firstname">First Name</label>
-                          <input id="firstname" type="text" value="John" />
+                          <input
+                            id="firstname"
+                            type="text"
+                            name="name"
+                            [(ngModel)]="name"
+                          />
                         </div>
                       </div>
                       <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="rbt-form-group">
                           <label for="lastname">Last Name</label>
-                          <input id="lastname" type="text" value="Due" />
+                          <input
+                            id="lastname"
+                            type="text"
+                            name="surname"
+                            [(ngModel)]="surname"
+                          />
                         </div>
                       </div>
                       <div class="col-lg-6 col-md-6 col-sm-6 col-12">
                         <div class="rbt-form-group">
-                          <label for="username">User Name</label>
-                          <input id="username" type="text" value="johndue" />
+                          <label for="username">Email</label>
+                          <input
+                            id="username"
+                            type="email"
+                            name="email"
+                            [(ngModel)]="email"
+                          />
                         </div>
                       </div>
                       <div class="col-lg-6 col-md-6 col-sm-6 col-12">
@@ -1213,7 +1096,8 @@
                           <input
                             id="phonenumber"
                             type="tel"
-                            value="+1-202-555-0174"
+                            name="phone"
+                            [(ngModel)]="phone"
                           />
                         </div>
                       </div>
@@ -1223,35 +1107,57 @@
                           <input
                             id="skill"
                             type="text"
-                            value="Full Stack Developer"
+                            name="profession"
+                            [(ngModel)]="profession"
                           />
                         </div>
                       </div>
                       <div class="col-lg-6 col-md-6 col-sm-6 col-12">
-                        <div class="filter-select rbt-modern-select">
-                          <label for="displayname" class=""
-                            >Display name publicly as</label
+                        <label class="form-label">Sube tu imagen: *</label>
+                        <div class="custom-file">
+                          <input
+                            type="file"
+                            class="custom-file-input"
+                            id="customFile"
+                            accept=".jpeg, .bmp, .jpg, .png, .gif, .webp"
+                            (change)="processFile($event)"
+                          />
+                          <label class="custom-file-label" for="customFile"
+                            >Choose file</label
                           >
-                          <select id="displayname" class="w-100">
-                            <option>Emily Hannah</option>
-                            <option>John</option>
-                            <option>Due</option>
-                            <option>Due John</option>
-                            <option>johndue</option>
-                          </select>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="rbt-form-group">
+                          <label for="birthday">Birthday</label>
+                          <input
+                            id="birthday"
+                            type="date"
+                            name="birthday"
+                            [(ngModel)]="birthday"
+                          />
                         </div>
                       </div>
                       <div class="col-12">
                         <div class="rbt-form-group">
-                          <label for="bio">Bio</label>
-                          <textarea id="bio" cols="20" rows="5">
-I'm the Front-End Developer for #Rainbow IT in Bangladesh, OR. I have serious passion for UI effects, animations and creating intuitive, dynamic user experiences.</textarea
+                          <label for="bio">Description</label>
+                          <textarea
+                            id="bio"
+                            cols="20"
+                            rows="5"
+                            name="description"
+                            [(ngModel)]="description"
                           >
+                          </textarea>
                         </div>
                       </div>
                       <div class="col-12 mt--20">
                         <div class="rbt-form-group">
-                          <a class="rbt-btn btn-gradient" href="#"
+                          <a
+                            class="rbt-btn btn-gradient"
+                            href="#"
+                            onclick="return false;"
+                            (click)="updateStudent()"
                             >Update Info</a
                           >
                         </div>
@@ -1273,18 +1179,10 @@ I'm the Front-End Developer for #Rainbow IT in Bangladesh, OR. I have serious pa
                     >
                       <div class="col-12">
                         <div class="rbt-form-group">
-                          <label for="currentpassword">Current Password</label>
-                          <input
-                            id="currentpassword"
-                            type="password"
-                            placeholder="Current Password"
-                          />
-                        </div>
-                      </div>
-                      <div class="col-12">
-                        <div class="rbt-form-group">
                           <label for="newpassword">New Password</label>
                           <input
+                            name=""
+                            [(ngModel)]="password"
                             id="newpassword"
                             type="password"
                             placeholder="New Password"
@@ -1297,6 +1195,8 @@ I'm the Front-End Developer for #Rainbow IT in Bangladesh, OR. I have serious pa
                             >Re-type New Password</label
                           >
                           <input
+                            name=""
+                            [(ngModel)]="password_confir"
                             id="retypenewpassword"
                             type="password"
                             placeholder="Re-type New Password"
@@ -1305,7 +1205,11 @@ I'm the Front-End Developer for #Rainbow IT in Bangladesh, OR. I have serious pa
                       </div>
                       <div class="col-12 mt--10">
                         <div class="rbt-form-group">
-                          <a class="rbt-btn btn-gradient" href="#"
+                          <a
+                            class="rbt-btn btn-gradient"
+                            href="#"
+                            onclick="return false;"
+                            (click)="updateStudent()"
                             >Update Password</a
                           >
                         </div>
