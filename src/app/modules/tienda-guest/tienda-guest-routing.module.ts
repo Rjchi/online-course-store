@@ -15,7 +15,7 @@ const routes: Routes = [
         component: LandingCourseComponent,
       },
       {
-        path: 'filters-course/',
+        path: 'filters-course',
         component: FiltersCourseComponent,
       },
     ],
