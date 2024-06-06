@@ -31,4 +31,10 @@ export class TiendaGuestService {
 
     return this.http.post(URL, data);
   }
+
+  getConfigAll() {
+    let URL = URL_SERVICIOS + 'home/config-all';
+
+    return this.http.get(URL);
+  }
 }
