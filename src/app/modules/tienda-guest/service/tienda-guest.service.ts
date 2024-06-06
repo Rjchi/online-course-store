@@ -21,4 +21,14 @@ export class TiendaGuestService {
       (campaing_special ? campaing_special : '');
     return this.http.get(URL);
   }
+
+  searchCourse(data: any) {
+    let URL =
+      URL_SERVICIOS +
+      'home/search-course/' +
+      '?time_now=' +
+      new Date().getTime();
+
+    return this.http.post(URL, data);
+  }
 }
