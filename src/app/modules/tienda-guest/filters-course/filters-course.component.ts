@@ -19,6 +19,8 @@ export class FiltersCourseComponent {
   idiomas: any = [];
   categories: any = [];
   instructores: any = [];
+  select_levels: any = [];
+  select_idiomas: any = [];
   select_categories: any = [];
   select_instructors: any = [];
 
@@ -94,8 +96,23 @@ export class FiltersCourseComponent {
     this.filterCourses();
   }
 
+  addLevels(levelName: string) {
+    let index = this.select_levels.findIndex(
+      (level: any) => level === levelName
+    );
+
+    if (index != -1) {
+      this.select_levels.splice(index, 1);
+    } else {
+      this.select_levels.push(levelName);
+    }
+
+    this.filterCourses();
+  }
+
   filterCourses() {
     let data = {
+      select_levels: this.select_levels,
       select_categories: this.select_categories,
       select_instructors: this.select_instructors,
     };

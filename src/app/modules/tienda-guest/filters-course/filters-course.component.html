@@ -284,6 +284,7 @@
                             <input
                               [id]="'lavels-list-' + i"
                               type="checkbox"
+                              (click)="addLevels(level.name)"
                               [name]="'lavels-list-' + i"
                             />
                             <label [attr.for]="'lavels-list-' + i"
