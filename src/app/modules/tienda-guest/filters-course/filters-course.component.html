@@ -254,6 +254,7 @@
                             <input
                               [id]="'ins-list-' + instructor._id"
                               type="checkbox"
+                              (click)="addInstructor(instructor._id)"
                               [name]="'ins-list-' + instructor._id"
                             />
                             <label [attr.for]="'ins-list-' + instructor._id"

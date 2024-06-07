@@ -20,6 +20,7 @@ export class FiltersCourseComponent {
   categories: any = [];
   instructores: any = [];
   select_categories: any = [];
+  select_instructors: any = [];
 
   constructor(
     public toaster: Toaster,
@@ -79,9 +80,24 @@ export class FiltersCourseComponent {
     this.filterCourses();
   }
 
+  addInstructor(idInstructor: string) {
+    let index = this.select_instructors.findIndex(
+      (instructor: any) => instructor._id === idInstructor
+    );
+
+    if (index != -1) {
+      this.select_instructors.splice(index, 1);
+    } else {
+      this.select_instructors.push(idInstructor);
+    }
+
+    this.filterCourses();
+  }
+
   filterCourses() {
     let data = {
       select_categories: this.select_categories,
+      select_instructors: this.select_instructors,
     };
 
     this.tiendaGuestService.searchCourse(data).subscribe((response: any) => {
