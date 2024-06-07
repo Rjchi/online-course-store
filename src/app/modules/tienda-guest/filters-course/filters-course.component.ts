@@ -24,6 +24,7 @@ export class FiltersCourseComponent {
   select_levels: any = [];
   select_idiomas: any = [];
   select_categories: any = [];
+  rating_selected: number = 0;
   select_instructors: any = [];
 
   constructor(
@@ -140,12 +141,18 @@ export class FiltersCourseComponent {
     this.filterCourses();
   }
 
+  selectedRating(rating: number) {
+    this.rating_selected = rating;
+    this.filterCourses();
+  }
+
   filterCourses() {
     let data = {
       min_price: this.min_price,
       max_price: this.max_price,
       select_levels: this.select_levels,
       select_idiomas: this.select_idiomas,
+      rating_selected: this.rating_selected,
       select_categories: this.select_categories,
       select_instructors: this.select_instructors,
     };
