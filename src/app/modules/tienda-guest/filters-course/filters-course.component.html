@@ -125,6 +125,7 @@
                             <input
                               [id]="'cat-list-' + categorie._id"
                               type="checkbox"
+                              (click)="addCategorie(categorie._id)"
                               [name]="'cat-list-' + categorie._id"
                             />
                             <label [attr.for]="'cat-list-' + categorie._id"

@@ -19,11 +19,12 @@ export class FiltersCourseComponent {
   idiomas: any = [];
   categories: any = [];
   instructores: any = [];
+  select_categories: any = [];
 
   constructor(
     public toaster: Toaster,
     public cartService: CartService,
-    public tiendaGuestService: TiendaGuestService,
+    public tiendaGuestService: TiendaGuestService
   ) {}
 
   ngOnInit(): void {
@@ -64,8 +65,24 @@ export class FiltersCourseComponent {
     }
   }
 
+  addCategorie(idCategorie: string) {
+    let index = this.select_categories.findIndex(
+      (categorie: any) => categorie._id === idCategorie
+    );
+
+    if (index != -1) {
+      this.select_categories.splice(index, 1);
+    } else {
+      this.select_categories.push(idCategorie);
+    }
+
+    this.filterCourses();
+  }
+
   filterCourses() {
-    let data = {};
+    let data = {
+      select_categories: this.select_categories,
+    };
 
     this.tiendaGuestService.searchCourse(data).subscribe((response: any) => {
       this.courses = response.courses;
