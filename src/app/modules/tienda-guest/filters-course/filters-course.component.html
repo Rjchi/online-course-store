@@ -314,6 +314,7 @@
                             <input
                               [id]="'features-list-' + i"
                               type="checkbox"
+                              (click)="addIdiomas(idioma.name)"
                               [name]="'features-list-' + i"
                             />
                             <label [attr.for]="'features-list-' + i"

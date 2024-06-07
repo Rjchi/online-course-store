@@ -110,9 +110,24 @@ export class FiltersCourseComponent {
     this.filterCourses();
   }
 
+  addIdiomas(idioma: string) {
+    let index = this.select_idiomas.findIndex(
+      (idiom: any) => idiom === idioma
+    );
+
+    if (index != -1) {
+      this.select_idiomas.splice(index, 1);
+    } else {
+      this.select_idiomas.push(idioma);
+    }
+
+    this.filterCourses();
+  }
+
   filterCourses() {
     let data = {
       select_levels: this.select_levels,
+      select_idiomas: this.select_idiomas,
       select_categories: this.select_categories,
       select_instructors: this.select_instructors,
     };
