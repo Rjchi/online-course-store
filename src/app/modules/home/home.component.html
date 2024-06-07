@@ -257,7 +257,7 @@
                   <div class="rbt-card variation-01 rbt-hover">
                     <div class="rbt-card-img">
                       <a
-                        [routerLink]="['store/landig-course/', COURSE_F.slug]"
+                        [routerLink]="['/store/landig-course/', COURSE_F.slug]"
                         [queryParams]="{
                           campaing_discount: CAMPAING_FLASH._id
                         }"
@@ -297,7 +297,10 @@
                       </div>
                       <h4 class="rbt-card-title">
                         <a
-                          [routerLink]="['store/landig-course/', COURSE_F.slug]"
+                          [routerLink]="[
+                            '/store/landig-course/',
+                            COURSE_F.slug
+                          ]"
                           [queryParams]="{
                             campaing_discount: CAMPAING_FLASH._id
                           }"
@@ -372,7 +375,7 @@
           <div class="col-lg-4 col-md-6 col-12">
             <div class="rbt-card variation-01 rbt-hover">
               <div class="rbt-card-img">
-                <a [routerLink]="['store/landig-course/', COURSE_TOP.slug]">
+                <a [routerLink]="['/store/landig-course/', COURSE_TOP.slug]">
                   <img [src]="COURSE_TOP.image" alt="Card image" />
                   <div
                     class="rbt-badge-3 bg-white"
@@ -408,7 +411,7 @@
                 </div>
 
                 <h4 class="rbt-card-title">
-                  <a [routerLink]="['store/landig-course/', COURSE_TOP.slug]">{{
+                  <a [routerLink]="['/store/landig-course/', COURSE_TOP.slug]">{{
                     COURSE_TOP.title
                   }}</a>
                 </h4>
@@ -1410,7 +1413,7 @@
                       <div class="rbt-card variation-01 rbt-hover">
                         <div class="rbt-card-img">
                           <a
-                            [routerLink]="['store/landig-course/', COURSE.slug]"
+                            [routerLink]="['/store/landig-course/', COURSE.slug]"
                           >
                             <img [src]="COURSE.image" alt="Card image" />
                             <div
@@ -1450,7 +1453,7 @@
                           <h4 class="rbt-card-title">
                             <a
                               [routerLink]="[
-                                'store/landig-course/',
+                                '/store/landig-course/',
                                 COURSE.slug
                               ]"
                               >{{ COURSE.title }}</a
