@@ -372,16 +372,18 @@
         <div class="rbt-course-grid-column">
           <ng-container *ngFor="let course of courses">
             <!-- Start Single Card  -->
-            <div class="course-grid-3">
+            <div class="col-lg-4 col-md-6 col-12">
               <div class="rbt-card variation-01 rbt-hover">
                 <div class="rbt-card-img">
-                  <a href="#" onclick="return false;">
-                    <img
-                      [src]="course.image"
-                      alt="Image"
-                    />
-                    <div class="rbt-badge-3 bg-white">
-                      <span>-40%</span>
+                  <a [routerLink]="['/store/landig-course/', course.slug]">
+                    <img [src]="course.image" alt="Card image" />
+                    <div class="rbt-badge-3 bg-white" *ngIf="course.discount_g">
+                      <span *ngIf="course.discount_g.type_discount === 1"
+                        >-{{ course.discount_g.discount }}%</span
+                      >
+                      <span *ngIf="course.discount_g.type_discount === 2"
+                        >-{{ course.discount_g.discount }}USD</span
+                      >
                       <span>Off</span>
                     </div>
                   </a>
@@ -406,39 +408,51 @@
                   </div>
 
                   <h4 class="rbt-card-title">
-                    <a href="#" onclick="return false;">{{ course.title }}</a>
+                    <a [routerLink]="['/store/landig-course/', course.slug]">{{
+                      course.title
+                    }}</a>
                   </h4>
-
                   <ul class="rbt-meta">
-                    <li><i class="feather-book"></i>12 Lessons</li>
-                    <li><i class="feather-users"></i>50 Students</li>
+                    <li>
+                      <i class="feather-book"></i>{{ course.n_clases }} Lessons
+                    </li>
+                    <li><i class="feather-users"></i>40 Students</li>
                   </ul>
-
                   <p class="rbt-card-text">
                     {{ course.subtitle }}
                   </p>
-                  <div class="rbt-author-meta mb--10">
+                  <div class="rbt-author-meta mb--20">
                     <div class="rbt-avater">
                       <a href="#">
-                        <img
-                          src="assets/images/client/avatar-02.png"
-                          alt="Sophia Jaymes"
-                        />
+                        <img [src]="course.user.avatar" alt="Sophia Jaymes" />
                       </a>
                     </div>
                     <div class="rbt-author-info">
-                      By <a href="profile.html">Angela</a> In
-                      <a href="#">Development</a>
+                      By
+                      <a href="#" onclick="return false;">{{
+                        course.user.name + " " + course.user.surname
+                      }}</a>
+                      In
+                      <a href="#">{{ course.user.profession }}</a>
                     </div>
                   </div>
+
                   <div class="rbt-card-bottom">
                     <div class="rbt-price">
-                      <span class="current-price">$60</span>
-                      <span class="off-price">$120</span>
+                      <span class="current-price"
+                        >${{ getTotalPriceCourse(course) }}</span
+                      >
+                      <span class="off-price" *ngIf="course.discount_g"
+                        >${{ course.price_usd }}</span
+                      >
                     </div>
-                    <a class="rbt-btn-link" href="course-details.html"
-                      >Learn More<i class="feather-arrow-right"></i
-                    ></a>
+                    <a
+                      class="rbt-btn-link left-icon"
+                      onclick="return false;"
+                      (click)="addCart(course)"
+                      href="#"
+                      ><i class="feather-shopping-cart"> Add To Cart</i></a
+                    >
                   </div>
                 </div>
               </div>
