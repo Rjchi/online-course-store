@@ -18,6 +18,8 @@ export class FiltersCourseComponent {
   courses: any = [];
   idiomas: any = [];
   categories: any = [];
+  min_price: number = 0;
+  max_price: number = 0;
   instructores: any = [];
   select_levels: any = [];
   select_idiomas: any = [];
@@ -52,11 +54,25 @@ export class FiltersCourseComponent {
         $('#slider-range').slider({
           range: true,
           min: 10,
-          max: 500,
-          values: [100, 300],
-          slide: function (event: any, ui: any) {
+          max: 3000,
+          values: [0, 3000],
+          /**-----------------------------------------------------
+           * | Si utilizamos una funcion directa la asignacion
+           * | del valor nuevo no se va a ver reflejado en las
+           * | definiciones externas
+           * -----------------------------------------------------*/
+          slide: (event: any, ui: any) => {
             $('#amount').val('$' + ui.values[0] + ' - $' + ui.values[1]);
+            this.min_price = ui.values[0];
+            this.max_price = ui.values[1];
           },
+          /**-------------------------------------------------------
+           * | Hasta que el usuario no deje de presionar el mouse
+           * | no se va a lanzar el valor final (con el evento stop)
+           * -------------------------------------------------------*/
+          stop: () => {
+            this.filterCourses();
+          }
         });
         $('#amount').val(
           '$' +
@@ -126,6 +142,8 @@ export class FiltersCourseComponent {
 
   filterCourses() {
     let data = {
+      min_price: this.min_price,
+      max_price: this.max_price,
       select_levels: this.select_levels,
       select_idiomas: this.select_idiomas,
       select_categories: this.select_categories,
