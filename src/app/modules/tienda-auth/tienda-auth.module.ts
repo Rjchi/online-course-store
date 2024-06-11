@@ -9,12 +9,14 @@ import { CartsComponent } from './carts/carts.component';
 import { TiendaAuthComponent } from './tienda-auth.component';
 import { TiendaAuthRoutingModule } from './tienda-auth-routing.module';
 import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
+import { CourseLeasonComponent } from './course-leason/course-leason.component';
 
 @NgModule({
   declarations: [
     CartsComponent,
     TiendaAuthComponent,
-    StudentDashboardComponent
+    StudentDashboardComponent,
+    CourseLeasonComponent
   ],
   imports: [
     CommonModule,
