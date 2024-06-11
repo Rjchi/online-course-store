@@ -20,7 +20,7 @@ const routes: Routes = [
         component: StudentDashboardComponent,
       },
       {
-        path: 'course-leason',
+        path: 'course-leason/:slug',
         component: CourseLeasonComponent,
       },
     ],
