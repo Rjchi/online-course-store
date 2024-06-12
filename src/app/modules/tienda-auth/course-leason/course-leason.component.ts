@@ -13,6 +13,7 @@ export class CourseLeasonComponent {
   slug: string = '';
   course: any = null;
   clase_selected: any = null;
+  clases_selecteds: any = [];
 
   constructor(
     public router: Router,
@@ -56,6 +57,18 @@ export class CourseLeasonComponent {
       return this.sanitizer.bypassSecurityTrustResourceUrl(clase.vimeo_id);
     } else {
       return (this.clase_selected = null);
+    }
+  }
+
+  checkedClass(clase: any) {
+    let index = this.clases_selecteds.findIndex((item: any) => {
+      item === clase._id;
+    });
+
+    if (index != -1) { // = a -1 no existe
+      this.clases_selecteds.splice(index, 1);
+    } else {
+      this.clases_selecteds.push(clase._id);
     }
   }
 }
