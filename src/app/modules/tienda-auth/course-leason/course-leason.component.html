@@ -183,7 +183,11 @@
                                   *ngFor="let clase of section.clases"
                                 >
                                   <li>
-                                    <a href="#" onclick="return false;" (click)="selectedClass(clase)">
+                                    <a
+                                      href="#"
+                                      onclick="return false;"
+                                      (click)="selectedClass(clase)"
+                                    >
                                       <div class="course-content-left">
                                         <i class="feather-play-circle"></i>
                                         <span class="text">{{
@@ -223,23 +227,17 @@
                   <div class="section-title">
                     <h4 class="rbt-title-style-3">Recursos</h4>
                   </div>
-                  <div class="row">
-                    <div class="col-6">
-                      <div class="course-content-left">
-                        <a href="">
-                          <i class="feather-file-text"></i>
-                          <span class="text">Read Before You Start</span>
-                        </a>
+                  <div class="row" *ngIf="clase_selected">
+                    <ng-container *ngFor="let file of clase_selected.files">
+                      <div class="col-6">
+                        <div class="course-content-left">
+                          <a [href]="file.file" target="_blank">
+                            <i class="feather-file-text"></i>
+                            <span class="text">{{ file.file_name }}</span>
+                          </a>
+                        </div>
                       </div>
-                    </div>
-                    <div class="col-6">
-                      <div class="course-content-left">
-                        <a href="">
-                          <i class="feather-file-text"></i>
-                          <span class="text">Read Before You Start</span>
-                        </a>
-                      </div>
-                    </div>
+                    </ng-container>
                   </div>
                 </div>
               </div>
