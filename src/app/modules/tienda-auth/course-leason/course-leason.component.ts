@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
+import { Toaster } from 'ngx-toast-notifications';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { TiendaAuthService } from '../service/tienda-auth.service';
-import { ActivatedRoute } from '@angular/router';
-
 @Component({
   selector: 'app-course-leason',
   templateUrl: './course-leason.component.html',
@@ -10,10 +10,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CourseLeasonComponent {
   slug: string = '';
+  course: any = null;
 
   constructor(
-    public tiendaAuthService: TiendaAuthService,
-    public activatedRouter: ActivatedRoute
+    public router: Router,
+    public toaster: Toaster,
+    public activatedRouter: ActivatedRoute,
+    public tiendaAuthService: TiendaAuthService
   ) {}
 
   ngOnInit(): void {
@@ -25,6 +28,18 @@ export class CourseLeasonComponent {
       .courseLeason(this.slug)
       .subscribe((response: any) => {
         console.log(response);
+        if (response.message && response.message === 403) {
+          this.toaster.open({
+            text: response.message_text,
+            caption: 'VALIDATIONS',
+            type: 'danger',
+          });
+
+          this.router.navigateByUrl('/');
+          return;
+        } else {
+          this.course = response.course;
+        }
       });
   }
 }
