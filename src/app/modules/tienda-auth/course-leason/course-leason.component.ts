@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
 import { Toaster } from 'ngx-toast-notifications';
+import { Component } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { TiendaAuthService } from '../service/tienda-auth.service';
@@ -11,10 +12,12 @@ import { TiendaAuthService } from '../service/tienda-auth.service';
 export class CourseLeasonComponent {
   slug: string = '';
   course: any = null;
+  clase_selected: any = null;
 
   constructor(
     public router: Router,
     public toaster: Toaster,
+    public sanitizer: DomSanitizer,
     public activatedRouter: ActivatedRoute,
     public tiendaAuthService: TiendaAuthService
   ) {}
@@ -39,7 +42,16 @@ export class CourseLeasonComponent {
           return;
         } else {
           this.course = response.course;
+          this.clase_selected = this.course.malla_curricular[0].clases[0];
         }
       });
+  }
+
+  selectedClass(clase: any) {
+    this.clase_selected = clase;
+  }
+
+  urlVideo(clase: any) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(clase.vimeo_id);
   }
 }
