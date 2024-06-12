@@ -52,6 +52,10 @@ export class CourseLeasonComponent {
   }
 
   urlVideo(clase: any) {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(clase.vimeo_id);
+    if (clase && clase.vimeo_id) {
+      return this.sanitizer.bypassSecurityTrustResourceUrl(clase.vimeo_id);
+    } else {
+      return (this.clase_selected = null);
+    }
   }
 }
