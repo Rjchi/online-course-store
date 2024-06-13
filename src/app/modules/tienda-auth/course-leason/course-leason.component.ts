@@ -13,6 +13,7 @@ export class CourseLeasonComponent {
   slug: string = '';
   course: any = null;
   clase_selected: any = null;
+  course_student: any = null;
   clases_selecteds: any = [];
 
   constructor(
@@ -43,7 +44,9 @@ export class CourseLeasonComponent {
           return;
         } else {
           this.course = response.course;
+          this.course_student = response.course_student;
           this.clase_selected = this.course.malla_curricular[0].clases[0];
+          this.clases_selecteds = this.course_student.clases_checked;
         }
       });
   }
@@ -61,14 +64,31 @@ export class CourseLeasonComponent {
   }
 
   checkedClass(clase: any) {
-    let index = this.clases_selecteds.findIndex((item: any) => {
-      item === clase._id;
-    });
+    let index = this.clases_selecteds.findIndex(
+      (item: any) => item == clase._id
+    );
 
-    if (index != -1) { // = a -1 no existe
+    if (index != -1) {
+      // = a -1 no existe
       this.clases_selecteds.splice(index, 1);
     } else {
       this.clases_selecteds.push(clase._id);
     }
+
+    let data = {
+      _id: this.course_student._id,
+      clases_checked: this.clases_selecteds,
+    };
+
+    this.tiendaAuthService.updateClase(data).subscribe((response: any) => {
+      console.log(response);
+      this.toaster.open({
+        text: response.message_text,
+        caption: 'VALIDATIONS',
+        type: 'primary',
+      });
+
+      return;
+    });
   }
 }
