@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { CartsComponent } from './carts/carts.component';
 import { TiendaAuthComponent } from './tienda-auth.component';
+import { CourseLeasonComponent } from './course-leason/course-leason.component';
 import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
 
 const routes: Routes = [
@@ -17,6 +18,10 @@ const routes: Routes = [
       {
         path: 'student-profile',
         component: StudentDashboardComponent,
+      },
+      {
+        path: 'course-leason/:slug',
+        component: CourseLeasonComponent,
       },
     ],
   },

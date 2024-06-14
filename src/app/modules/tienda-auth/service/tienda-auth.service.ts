@@ -44,4 +44,18 @@ export class TiendaAuthService {
 
     return this.http.post(url, data, { headers });
   }
+
+  courseLeason(slug: string) {
+    let url = URL_SERVICIOS + 'profile/course/' + slug;
+    let headers = new HttpHeaders({ token: this.authService.token });
+
+    return this.http.get(url, { headers });
+  }
+
+  updateClase(data: any) {
+    let url = URL_SERVICIOS + 'profile/course-student';
+    let headers = new HttpHeaders({ token: this.authService.token });
+
+    return this.http.post(url, data, { headers });
+  }
 }
